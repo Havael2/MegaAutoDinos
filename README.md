@@ -4,7 +4,9 @@ Por enquanto é só o esqueleto.
 (Cargo 3) Duas pessoas poderiam buscar soluções de otimizar o código.
 
 (C.1): 
+
 (C.2): Gabriel;
+
 (C.3):
 
 

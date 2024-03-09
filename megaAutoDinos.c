@@ -4,7 +4,7 @@
 #include <time.h>
 #define TAMesp 2 // Deve estar de acordo com a quantidade de espécies já feitas. TAMe será 21 ao final.
 #define TAMadj 3 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMa será 9 ao final.
-#define TAMsubs 3 // Deve estar de acordo com a quantidade de espécies já feitas. TAMs será 9 ao final.
+#define TAMsubs 3 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMs será 9 ao final.
 
 typedef struct
 {

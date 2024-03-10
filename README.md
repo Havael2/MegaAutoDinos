@@ -7,7 +7,7 @@ Por enquanto é só o esqueleto.
 
 (C.2): Gabriel;
 
-(C.3):
+(C.3): Gustavo; 
 
 
 

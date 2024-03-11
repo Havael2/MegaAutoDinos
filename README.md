@@ -5,7 +5,7 @@ Por enquanto é só o esqueleto.
 
 (C.1): 
 
-(C.2): Gabriel;
+(C.2): Gabriel, José;
 
 (C.3): Gustavo; 
 

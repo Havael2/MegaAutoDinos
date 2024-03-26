@@ -5,14 +5,19 @@
 #define TAMesp 2 // Deve estar de acordo com a quantidade de espécies já feitas. TAMe será 21 ao final.
 #define TAMadj 3 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMa será 9 ao final.
 #define TAMsubs 3 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMs será 9 ao final.
+#define MAX 5
 
-typedef struct
-{
+typedef struct{
     int vida;
     int dano;
     char nome[30];
-
 } atributos;
+
+typedef struct{
+    int topo;
+    atributos animais[MAX];
+}
+
 
 atributos especies(int *spc) // Preencher com 21 animais relativos aos números inteiros de 0 a 20. (obs: não é nescessário que spc seja um ponteiro, mas como não sei o porquê mantive assim.)
 {

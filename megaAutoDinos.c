@@ -16,8 +16,7 @@ typedef struct{
 typedef struct{
     int topo;
     atributos animais[MAX];
-}
-
+} Pilha;
 
 atributos especies(int *spc) // Preencher com 21 animais relativos aos números inteiros de 0 a 20. (obs: não é nescessário que spc seja um ponteiro, mas como não sei o porquê mantive assim.)
 {

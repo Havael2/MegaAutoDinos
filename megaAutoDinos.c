@@ -3,9 +3,9 @@
 #include <string.h>
 #include <time.h>
 #include "pilhadinos.h"
-#define TAMesp 2 // Deve estar de acordo com a quantidade de espécies já feitas. TAMe será 21 ao final.
-#define TAMadj 3 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMa será 9 ao final.
-#define TAMsubs 3 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMs será 9 ao final.
+#define TAMesp 2 // Deve estar de acordo com a quantidade de espécies já feitas. TAMesp será 14 ao final.
+#define TAMadj 3 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMadj será 9 ao final.
+#define TAMsubs 3 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMsubs será 9 ao final.
 
 dinos especies(int spc) {
     dinos bicho;

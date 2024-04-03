@@ -29,20 +29,20 @@ void inicializarPilha(tp_pilha *p){
 void push(tp_pilha *p, dinos d){
 	if(cheia_pilha(p) == 0){
 	p->topo++;
-	p->dados[p->topo] = l;	
+	p->animais[p->topo] = d;	
 	}
 	else{
-	printf("tp_pilha CHEIA\n");	
+	printf("PILHA CHEIA\n");	
 	}
 }
 
 void pop(tp_pilha *p, dinos *d){
 	if(vazia_pilha(p) == 0){
-	*l = p->dados[p->topo];
-	p->topo--;		
+		*d = p->animais[p->topo];
+		p->topo--;		
 	}
 	else{
-	printf("tp_pilha VAZIA\n");	
+	printf("PILHA VAZIA\n");	
 	}
 	
 }
@@ -66,7 +66,7 @@ int cheia_pilha(tp_pilha *p){
 }
 
 dinos topo_pilha(tp_pilha *p){
-	return p->dados[p->topo];
+	return p->animais[p->topo];
 }
 
 int tamanho_pilha(tp_pilha *p){

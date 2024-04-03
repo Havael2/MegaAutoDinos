@@ -1,0 +1,14 @@
+void ordenarPilha(tp_pilha *p){              //funçao para ordenar os dinossauros do com menos vida ate o mais forte 
+    int i, j;
+    dinos temp;
+    
+    for(i = 0; i < p->topo; i++) {
+        for(j = 0; j < p->topo - i; j++) {
+            if(p->animais[j].vida > p->animais[j+1].vida) {
+                temp = p->animais[j];
+                p->animais[j] = p->animais[j+1];
+                p->animais[j+1] = temp;
+            }
+        }
+    }
+}

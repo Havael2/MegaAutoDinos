@@ -7,6 +7,7 @@
 #define TAMadj 11 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMadj será 11 ao final.
 #define TAMsubs 11 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMsubs será 11 ao final.
 
+dinos especies(int spc) {
 dinos bicho;
     if (spc == 0) {
         strcpy(bicho.nome, "Tiranossauro Rex");

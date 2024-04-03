@@ -8,11 +8,10 @@ PRIMEIRA ENTREGA:
 (Cargo 3) Duas pessoas poderiam buscar soluções de otimizar o código.
 
 
-(C.1): Rafael;
-
+(C.1): Rafael; 
 (C.2): Gabriel, José; 
 
-(C.3): Gustavo, Carol;
+(C.3): Gustavo, Carol; 
 
 
 

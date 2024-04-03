@@ -2,32 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "pilhadinos.h"
 #define TAMesp 2 // Deve estar de acordo com a quantidade de espécies já feitas. TAMe será 21 ao final.
 #define TAMadj 3 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMa será 9 ao final.
 #define TAMsubs 3 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMs será 9 ao final.
-#define MAX 5
 
-typedef struct{
-    int vida;
-    int dano;
-    char nome[30];
-} atributos;
-
-typedef struct{
-    int topo;
-    atributos animais[MAX];
-} Pilha;
-
-atributos especies(int *spc) // Preencher com 21 animais relativos aos números inteiros de 0 a 20. (obs: não é nescessário que spc seja um ponteiro, mas como não sei o porquê mantive assim.)
-{
-    atributos bicho;
-    if (*spc==0)
+dinos especies(int spc) {
+    dinos bicho;
+    if (spc==0)
     {
         strcpy(bicho.nome, "Tiranossauro Rex"); // Habilidade(opcional): Dá 2 de dano aos aliados adjacentes a cada rodada.
         bicho.vida = 12;
         bicho.dano = 17;
     }
-    if (*spc==1)
+    if (spc==1)
     {
         strcpy(bicho.nome, "Velociraptor"); // Habilidade (opcional): Ao morrer, invoca mais 2 velociraptors caso haja espaço.
         bicho.vida = 3;
@@ -37,26 +25,7 @@ atributos especies(int *spc) // Preencher com 21 animais relativos aos números 
     return bicho;
 }
 
-void definirLoja(int *lj) // Definição da loja a cada início de turno.
-{
-    time_t t;
-    srand((unsigned) time(&t));
-    int i;
-    atributos bichosLoja[3];
-    for (i=0; i<3; i++)
-    {
-        *(lj+i) = rand() % TAMesp;
-        bichosLoja[i] = especies(lj+i);
-    }
-    printf("Bichos na loja:\n");
-    for (i=0; i<3; i++) // Exibição dos bichos na loja.
-    {
-        printf("%d.%s  ", (i+1), bichosLoja[i].nome);
-    }
-}
-
-char *definirSubstantivo(int nS)
-{
+char *definirSubstantivo(int nS) {
     if (nS==0)
         return "Vulcane";
     if (nS==1)
@@ -79,8 +48,6 @@ char *definirAdjetivo(int nA)
 
 void definirNome(char *nmG)
 {
-    time_t t;
-    srand((unsigned) time(&t));
     int numSubs[3], numAdj[3], i;
     printf("\n\nEscolha um nome para o seu novo grupo:\nAdjetivos        Substantivos\n");
     for (i=0; i<3; i++)
@@ -98,18 +65,34 @@ void definirNome(char *nmG)
         }
         printf("%d.%s\n", (i+1), definirSubstantivo(numSubs[i]));
     }
-    // **Falta fazer um switch para a entrada dos números que representam o adjetivo e o substantivo 
-    // (ou novas strings pra guardar a decisão)**
+
+    /*Falta fazer um switch para a entrada dos números que representam o adjetivo e o substantivo 
+    (ou novas strings pra guardar a decisão)*/
+
     // Posterior junção do adj. e subs.: *nmG = strcat(substantivo, adjetivo);
 
 }
+
+void embaralharGrupo(tp_pilha *pGrupo) {
+	dinos e;
+	while (!cheia_pilha(pGrupo))	{
+		push(pGrupo, especies(rand()%TAMesp));
+	}
+	while (!vazia_pilha(pGrupo)) {
+		pop(pGrupo, &e);
+		printf(" %s\n", e.nome);
+   	}
+}
+
 int main ()
 {
+    srand(time(NULL));
     char nomeGrupo[20];
-    atributos grupo[5];
-    int loja[3], i;
-    printf("\n");
-    definirLoja(loja);
+    tp_pilha grupo;
+    inicializarPilha(&grupo);
     definirNome(nomeGrupo);
+    printf("\nComposicao do seu grupo:\n");
+    embaralharGrupo(&grupo);
     return 0;
 }
+

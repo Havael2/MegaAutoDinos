@@ -10,7 +10,6 @@ PRIMEIRA ENTREGA:
 
 (C.1): Rafael; 
 (C.2): Gabriel, José; 
-
 (C.3): Gustavo, Carol; 
 
 

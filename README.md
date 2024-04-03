@@ -10,6 +10,6 @@ PRIMEIRA ENTREGA:
         Documentação do algoritmo através de comentários.
         Relatório com a participação de cada membro da equipe.
         
-
+Para finalizar, falta somente terminar a função "definirNome" e preencher o resto das espécies, adjetivos e substantivos.
 
 

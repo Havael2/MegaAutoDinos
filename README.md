@@ -1,7 +1,5 @@
 PRIMEIRA ENTREGA:
 
-Entregáveis do Trabalho Semestral:
-
     Algoritmo contendo as seguintes funcionalidades:
         Solicitação do nome, do adjetivo e do substantivo da equipe do jogador;
         Criação dos animais (mínimo de 21).

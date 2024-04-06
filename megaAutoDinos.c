@@ -16,7 +16,7 @@ typedef struct
 } atributos;
 
 atributos especies(int spc) {
-dinos bicho;
+atributos bicho;
     if (spc == 0) {
         strcpy(bicho.nome, "Tiranossauro Rex");
         bicho.vida = 12;

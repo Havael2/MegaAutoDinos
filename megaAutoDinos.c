@@ -7,16 +7,8 @@
 #define TAMadj 11 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMadj será 11 ao final.
 #define TAMsubs 11 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMsubs será 11 ao final.
 
-typedef struct
-{
-    int vida;
-    int dano;
-    char nome[30];
-
-} atributos;
-
-atributos especies(int spc) {
-atributos bicho;
+dinos especies(int spc) {
+dinos bicho;
     if (spc == 0) {
         strcpy(bicho.nome, "Tiranossauro Rex");
         bicho.vida = 12;
@@ -152,9 +144,9 @@ char *definirSubstantivo(int nS) {
     if (nS==1)
         return "Pangeia";
     if (nS==2)
-        return "OS Roqueiros";
+        return "Os Roqueiros";
 	 if (nS==3)
-        return "OS Radicais";
+        return "Os Radicais";
 	 if (nS==4)
         return "Os Dinos";
 	 if (nS==5)
@@ -176,7 +168,7 @@ char *definirSubstantivo(int nS) {
 char *definirAdjetivo(int nA)
 {
     if (nA==0)
-       return "Jurássico";
+       return "Jurassico";
     if (nA==1)
         return "Insana";
     if (nA==2)
@@ -197,56 +189,6 @@ char *definirAdjetivo(int nA)
 	    return "Majestoso";
 	 if (nA==10)
 	    return "Alegre";
-}
-
-void definirNome(char *nmG)
-{
-    int numSubs[3], numAdj[3], i;
-    printf("\n\nEscolha um nome para o seu novo grupo:\nAdjetivos        Substantivos\n");
-    for (i=0; i<3; i++)
-    {
-        numAdj[i] = rand() % TAMadj;
-        while((i==1 && numAdj[i]==numAdj[i-1]) || (i==2 && (numAdj[i]==numAdj[i-1] || numAdj[i]==numAdj[i-2])))
-        {
-            numAdj[i] = rand() % TAMadj;
-        }
-        printf("%d.%s        ", (i+1), definirAdjetivo(numAdj[i]));
-        numSubs[i] = rand() % TAMsubs;
-        while((i==1 && numSubs[i]==numSubs[i-1]) || (i==2 && (numSubs[i]==numSubs[i-1] || numSubs[i]==numSubs[i-2])))
-        {
-            numSubs[i] = rand() % TAMsubs;
-        }
-        printf("%d.%s\n", (i+1), definirSubstantivo(numSubs[i]));
-    }
-
-    /*Falta fazer um switch para a entrada dos números que representam o adjetivo e o substantivo 
-    (ou novas strings pra guardar a decisão)*/
-
-    // Posterior junção do adj. e subs.: *nmG = strcat(substantivo, adjetivo);
-
-}
-
-void embaralharGrupo(tp_pilha *pGrupo) {
-	dinos e;
-	while (!cheia_pilha(pGrupo))	{
-		push(pGrupo, especies(rand()%TAMesp));
-	}
-	while (!vazia_pilha(pGrupo)) {
-		pop(pGrupo, &e);
-		printf(" %s\n", e.nome);
-   	}
-}
-
-int main ()
-{
-    srand(time(NULL));
-    char nomeGrupo[20];
-    tp_pilha grupo;
-    inicializarPilha(&grupo);
-    definirNome(nomeGrupo);
-    printf("\nComposicao do seu grupo:\n");
-    embaralharGrupo(&grupo);
-    return 0;
 }
 
 void definirNome(char *nmG)
@@ -304,3 +246,27 @@ void definirNome(char *nmG)
     strcat(nmG, substantivoEscolhido);
 }
 
+void embaralharGrupo(tp_pilha *pGrupo) {
+	dinos e;
+	while (!cheia_pilha(pGrupo))	{
+		push(pGrupo, especies(rand()%TAMesp));
+	}
+	while (!vazia_pilha(pGrupo)) {
+		pop(pGrupo, &e);
+		printf("Especie: %s ", e.nome);
+    		printf("Vida: %d ", e.vida);
+    		printf("Dano: %d\n", e.dano);
+   	}
+}
+
+int main(){
+    srand(time(NULL));
+    char nomeGrupo[20];
+    tp_pilha grupo;
+    inicializarPilha(&grupo);
+    definirNome(nomeGrupo);
+    printf("Nome do grupo: %s", nomeGrupo);
+    printf("\nComposicao do seu grupo:\n");
+    embaralharGrupo(&grupo);
+    return 0;
+}

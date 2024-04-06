@@ -13,17 +13,26 @@ typedef struct{
     dinos animais[MAX];
 } tp_pilha;
 
-void inicializarPilha(tp_pilha *p);
-void push(tp_pilha *p, dinos l);
-void pop(tp_pilha *p, dinos *l);
-int vazia_pilha(tp_pilha *p);
-int cheia_pilha(tp_pilha *p);
-dinos topo_pilha(tp_pilha *p);
-int tamanho_pilha(tp_pilha *p);
-void imprimirPilha(tp_pilha *p);
-
 void inicializarPilha(tp_pilha *p){
 	p->topo = -1;
+}
+
+int vazia_pilha(tp_pilha *p){
+	if(p->topo == -1){
+		return 1;	
+	}
+	else{
+		return 0;	
+	}
+}
+
+int cheia_pilha(tp_pilha *p){
+	if(p->topo == MAX-1){
+	return 1;	
+	}
+	else{
+	return 0;	
+	}
 }
 
 void push(tp_pilha *p, dinos d){
@@ -45,28 +54,6 @@ void pop(tp_pilha *p, dinos *d){
 	printf("PILHA VAZIA\n");	
 	}
 	
-}
-
-int vazia_pilha(tp_pilha *p){
-	if(p->topo == -1){
-		return 1;	
-	}
-	else{
-		return 0;	
-	}
-}
-
-int cheia_pilha(tp_pilha *p){
-	if(p->topo == MAX-1){
-	return 1;	
-	}
-	else{
-	return 0;	
-	}
-}
-
-dinos topo_pilha(tp_pilha *p){
-	return p->animais[p->topo];
 }
 
 int tamanho_pilha(tp_pilha *p){

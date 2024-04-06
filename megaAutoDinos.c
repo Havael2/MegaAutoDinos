@@ -171,8 +171,6 @@ char *definirSubstantivo(int nS) { // Função que recebe um indice e retorna um
         return "Os loucos";
     if (nS==10)
         return "As Lendas";
-	
-    // continua...
 }
 
 char *definirAdjetivo(int nA){ // Função que recebe um indice e retorna uma string que é o adjetivo do nome do grupo
@@ -206,7 +204,7 @@ void definirNome(char *nmG)
     printf("\n\nEscolha um nome para o seu novo grupo:\nAdjetivos        Substantivos\n");
     for (i=0; i<3; i++)
     {
-        numAdj[i] = rand() % TAMadj;                  //loop que gera três pares de números aleatórios e que nao se repetem 
+        numAdj[i] = rand() % TAMadj;                  //loop que gera três pares de números aleatórios e que nao se repetem para gerar os subs e adjs a serem escolhidos
         while((i==1 && numAdj[i]==numAdj[i-1]) || (i==2 && (numAdj[i]==numAdj[i-1] || numAdj[i]==numAdj[i-2])))
         {
             numAdj[i] = rand() % TAMadj;
@@ -220,7 +218,7 @@ void definirNome(char *nmG)
         printf("%d.%s\n", (i+1), definirSubstantivo(numSubs[i]));
     }
 
-    int escolhaAdj, escolhaSubs;  //escolher um adjetivo e um substantivo da lista 
+    int escolhaAdj, escolhaSubs;  //interface para escolher um adjetivo e um substantivo da lista gerada
     printf("\nEscolha o adjetivo (1-3): ");
     scanf("%d", &escolhaAdj);
     printf("Escolha o substantivo (1-3): ");
@@ -250,17 +248,17 @@ void definirNome(char *nmG)
             break;
     }
 
-    strcpy(nmG, adjetivoEscolhido);
+    strcpy(nmG, adjetivoEscolhido); //juntar subs e adjt por referencia para armazena-lo na main
     strcat(nmG, " ");
     strcat(nmG, substantivoEscolhido);
 }
 
-void embaralharGrupo(tp_pilha *pGrupo) {
+void embaralharGrupo(tp_pilha *pGrupo) { // Funçao que gera os dinos na loja e os imprimem
 	dinos e;
-	while (!cheia_pilha(pGrupo))	{
+	while (!cheia_pilha(pGrupo))	{ //gerar
 		push(pGrupo, especies(rand()%TAMesp));
 	}
-	while (!vazia_pilha(pGrupo)) {
+	while (!vazia_pilha(pGrupo)) { //imprimir
 		pop(pGrupo, &e);
 		printf("Especie: %s ", e.nome);
     		printf("Vida: %d ", e.vida);

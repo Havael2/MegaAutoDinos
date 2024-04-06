@@ -1,8 +1,8 @@
 PRIMEIRA ENTREGA:
 
     Algoritmo contendo as seguintes funcionalidades:
-        Solicitação do nome, do adjetivo e do substantivo da equipe do jogador; (OK)
-        Criação dos animais (mínimo de 21).(OK)
+        Solicitação do nome, do adjetivo e do substantivo da equipe do jogador;
+        Criação dos animais (mínimo de 21).
             Pode haver repetição.
         Embaralhamento dos animais criados. 
         Sobreposição dos animais.

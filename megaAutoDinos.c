@@ -7,7 +7,7 @@
 #define TAMadj 11 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMadj será 11 ao final.
 #define TAMsubs 11 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMsubs será 11 ao final.
 
-typedef struct
+typedef struct // Definição do struct atributos que sera usado como template para os atributos específicos de cada dino
 {
     int vida;
     int dano;
@@ -15,7 +15,7 @@ typedef struct
 
 } atributos;
 
-atributos especies(int spc){
+atributos especies(int spc){ // Função que recebe um indice e retorna um "struct atributos" com as devidas informações de cada dino listadas abaixo
 
     atributos bicho;
 
@@ -148,7 +148,7 @@ atributos especies(int spc){
     return bicho;
 }
 
-char *definirSubstantivo(int nS) {
+char *definirSubstantivo(int nS) { // Função que recebe um indice e retorna uma string que é o substantivo do nome do grupo
     if (nS==0)
         return "Vulcano";
     if (nS==1)
@@ -175,8 +175,7 @@ char *definirSubstantivo(int nS) {
     // continua...
 }
 
-char *definirAdjetivo(int nA)
-{
+char *definirAdjetivo(int nA){ // Função que recebe um indice e retorna uma string que é o adjetivo do nome do grupo
     if (nA==0)
        return "Jurassico";
     if (nA==1)

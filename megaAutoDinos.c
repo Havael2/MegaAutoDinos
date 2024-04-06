@@ -155,21 +155,21 @@ char *definirSubstantivo(int nS) {
         return "Pangeia";
     if (nS==2)
         return "Os Roqueiros";
-	 if (nS==3)
+    if (nS==3)
         return "Os Radicais";
-	 if (nS==4)
+    if (nS==4)
         return "Os Dinos";
-	 if (nS==5)
+    if (nS==5)
         return "Fosseis";
-	 if (nS==6)
+    if (nS==6)
         return "Os Rugidos";
-	 if (nS==7)
+    if (nS==7)
         return "Os Brilhosos";
-	 if (nS==8)
+    if (nS==8)
         return "Os Divos";
-	 if (nS==9)
+    if (nS==9)
         return "Os loucos";
-	 if (nS==10)
+    if (nS==10)
         return "As Lendas";
 	
     // continua...
@@ -184,21 +184,21 @@ char *definirAdjetivo(int nA)
     if (nA==2)
         return "Flamejante";
     if (nA==3)
-	    return "fofo";
+	return "fofo";
     if (nA==4)
-	    return "Sensivel";
+	return "Sensivel";
     if (nA==5)
-	    return "Feroz";
+	return "Feroz";
     if (nA==6)
-	    return "Sabio";
-	  if (nA==7)
-	    return "Saltitante";
-	  if (nA==8)
-	    return "Cintilante";
-	  if (nA==9)
-	    return "Majestoso";
-	 if (nA==10)
-	    return "Alegre";
+	return "Sabio";
+    if (nA==7)
+	return "Saltitante";
+    if (nA==8)
+	return "Cintilante";
+    if (nA==9)
+	return "Majestoso";
+    if (nA==10)
+	return "Alegre";
 }
 
 void definirNome(char *nmG)

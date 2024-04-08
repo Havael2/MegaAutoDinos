@@ -248,7 +248,7 @@ void definirNome(char *nmG)
             break;
     }
 
-    strcpy(nmG, adjetivoEscolhido); //juntar subs e adjt por referencia para armazena-lo na main
+    strcpy(nmG, adjetivoEscolhido); //concatena os substantivos e adjetivos escolhidos e os armazena
     strcat(nmG, " ");
     strcat(nmG, substantivoEscolhido);
 }

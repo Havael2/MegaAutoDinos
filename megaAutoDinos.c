@@ -64,7 +64,7 @@ atributos especies(int spc){ // Função que recebe um indice e retorna um "stru
     if (spc == 7) {
         strcpy(bicho.nome, "Dilophosaurus");
         bicho.vida = 7;
-        bicho.dano = 4;
+        bicho.dano = 2;
         // Habilidade (opcional): Cospe veneno, dando 2 de dano entra a cada rodada.
     }
     if (spc == 8) {

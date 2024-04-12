@@ -75,8 +75,8 @@ atributos especies(int spc){ // Função que recebe um indice e retorna um "stru
     }
     if (spc == 9) {
         strcpy(bicho.nome, "Deinonychus");
-        bicho.vida = 6;
-        bicho.dano = 13;
+        bicho.vida = 13;
+        bicho.dano = 4;
         // Habilidade (opcional): Pode atacar rapidamente, ignorando parte da defesa do inimigo.
     }
     if (spc == 10) {
@@ -99,14 +99,14 @@ atributos especies(int spc){ // Função que recebe um indice e retorna um "stru
     }	    
     if (spc == 13) {
         strcpy(bicho.nome, "Carnotaurus");
-        bicho.vida = 15;
+        bicho.vida = 13;
         bicho.dano = 9;
         // Habilidade (opcional): Pode atacar somente duas vezes e depois se elimina.
     }
     if (spc == 14) {
         strcpy(bicho.nome, "Amargasaurus");
         bicho.vida = 8;
-        bicho.dano = 5;
+        bicho.dano = 4;
         // Habilidade (opcional): Pode atacar dois alvos simultaneamente.
     }
     if  (spc == 15) {

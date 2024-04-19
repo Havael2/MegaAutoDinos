@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 # project name and language
-project(MegaAutoDinos)
+project(MegaAutoDinos C)
 
 # generate a library from sources
 add_library(library pilhadinos.h)

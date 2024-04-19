@@ -16,8 +16,8 @@ jobs:
       - name: Configure and Build Project
         uses: threeal/cmake-action@main
         with:
-          source-dir: megaAutoDinos.c
-          build-dir: release
+          source-dir: source
+          build-dir: build
           c-compiler: gcc
           generator: Ninja
           

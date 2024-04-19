@@ -9,5 +9,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.2
 
+      - name: Get CMake
+        uses: symbitic/install-cmake@master
+
       - name: Configure and Build Project
         uses: threeal/cmake-action@main

@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 project(MegaAutoDinos C)
 
 # generate a library from sources
-add_library(library INTERFACE pilhadinos.h)
+add_library(library pilhadinos.h megaAutoDinos.c)
 
 add_executable(MegaAutoDinos megaAutoDinos.c)
 

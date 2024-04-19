@@ -7,17 +7,9 @@
 #define TAMadj 11 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMadj será 11 ao final.
 #define TAMsubs 11 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMsubs será 11 ao final.
 
-typedef struct // Definição do struct atributos que sera usado como template para os atributos específicos de cada dino
-{
-    int vida;
-    int dano;
-    char nome[30];
+dinos especies(int spc){ // Função que recebe um indice e retorna um "struct dinos" com as devidas informações de cada dino listadas abaixo
 
-} atributos;
-
-atributos especies(int spc){ // Função que recebe um indice e retorna um "struct atributos" com as devidas informações de cada dino listadas abaixo
-
-    atributos bicho;
+    dinos bicho;
 
     if (spc == 0) {
         strcpy(bicho.nome, "Tiranossauro Rex");

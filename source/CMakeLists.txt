@@ -7,6 +7,6 @@ project(MegaAutoDinos)
 # generate a library from sources
 add_library(library pilhadinos.h)
 
-add_executable(MegaAutoDinos MegaAutoDinos.c)
+add_executable(MegaAutoDinos megaAutoDinos.c)
 
 target_link_libraries(MegaAutoDinos library)

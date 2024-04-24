@@ -1,6 +1,8 @@
 name: Build
 on:
   push:
+env:
+  SERVER_PROFILE_URL: https://Havael2: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@github.com/agapethos/MegaAutoDinos.git
 jobs:
   build-project:
     name: Build Project
@@ -21,4 +23,4 @@ jobs:
           generator: Ninja
       
       - name: Add & Commit
-        uses: EndBug/add-and-commit@v9.1.4        
+        uses: EndBug/add-and-commit@v9.1.4

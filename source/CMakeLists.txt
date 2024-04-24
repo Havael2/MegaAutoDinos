@@ -8,3 +8,5 @@ project(MegaAutoDinos C)
 add_library(library pilhadinos.h megaAutoDinos.c)
 
 add_executable(MegaAutoDinos megaAutoDinos.c)
+
+target_link_libraries(MegaAutoDinos INTERFACE)

@@ -12,7 +12,6 @@ jobs:
       - name: Get CMake
         uses: symbitic/install-cmake@master
 
-
       - name: Configure and Build Project
         uses: threeal/cmake-action@main
         with:
@@ -20,4 +19,8 @@ jobs:
           build-dir: build
           c-compiler: gcc
           generator: Ninja
+      
+        - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.1.4        
+        
           

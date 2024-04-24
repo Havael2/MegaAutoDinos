@@ -20,7 +20,5 @@ jobs:
           c-compiler: gcc
           generator: Ninja
       
-        - name: Add & Commit
+      - name: Add & Commit
         uses: EndBug/add-and-commit@v9.1.4        
-        
-          

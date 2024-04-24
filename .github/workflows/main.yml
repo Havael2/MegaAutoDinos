@@ -1,8 +1,6 @@
 name: Build
 on:
   push:
-env:
-  SERVER_PROFILE_URL: https://Havael2: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@github.com/agapethos/MegaAutoDinos.git
 jobs:
   build-project:
     name: Build Project
@@ -25,4 +23,4 @@ jobs:
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.1.4
         with:
-          push: "$SERVER_PROFILE_URL"
+          push: --repo=https://Havael2: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@github.com/agapethos/MegaAutoDinos.git --set-upstream

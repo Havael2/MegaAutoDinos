@@ -25,4 +25,6 @@ jobs:
           generator: Ninja
       
       - name: Add & Commit
-        run: "git push"
+        run: |
+          git add
+          git push

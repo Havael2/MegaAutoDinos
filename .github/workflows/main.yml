@@ -1,6 +1,10 @@
 name: Build
 on:
   push:
+  
+permissions:
+  contents: write
+    
 jobs:
   build-project:
     name: Build Project
@@ -21,5 +25,4 @@ jobs:
           generator: Ninja
       
       - name: Add & Commit
-        run: "git push --repo=https://Havael2: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@github.com/agapethos/MegaAutoDinos.git --set-upstream"
-    
+        run: "git push"

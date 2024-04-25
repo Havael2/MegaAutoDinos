@@ -26,6 +26,7 @@ jobs:
       
       - name: Add & Commit
         run: |
+          git config --global user.name "Actions"
           git add .
           git commit
           git push

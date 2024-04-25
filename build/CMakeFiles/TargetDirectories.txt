@@ -1,0 +1,4 @@
+/home/runner/work/MegaAutoDinos/MegaAutoDinos/build/CMakeFiles/rebuild_cache.dir
+/home/runner/work/MegaAutoDinos/MegaAutoDinos/build/CMakeFiles/MegaAutoDinos.dir
+/home/runner/work/MegaAutoDinos/MegaAutoDinos/build/CMakeFiles/edit_cache.dir
+/home/runner/work/MegaAutoDinos/MegaAutoDinos/build/CMakeFiles/library.dir

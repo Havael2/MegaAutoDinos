@@ -1,0 +1,5 @@
+# ninja log v5
+0	59	1714053119023484530	CMakeFiles/library.dir/megaAutoDinos.c.o	c5d4ea5da072594c
+0	60	1714053119023484530	CMakeFiles/MegaAutoDinos.dir/megaAutoDinos.c.o	acfecd24a9305b5c
+60	83	1714053119047484124	MegaAutoDinos	7bdc5acad673c9be
+59	683	1714053119639474103	liblibrary.a	f2576db21b9f1236

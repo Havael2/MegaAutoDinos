@@ -21,7 +21,7 @@ jobs:
         with:
           source-dir: source
           build-dir: build
-          c-compiler: gcc
+          c-compiler: gcc-win64
           generator: Ninja
       
       - name: Add & Commit

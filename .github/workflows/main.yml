@@ -17,6 +17,9 @@ jobs:
         run: |
           sudo apt-get install mingw-w64
 
+      - name: install-cmake
+        uses: Symbitic/install-cmake@v0.1.0
+
       - name: Configure and Build Project
         uses: threeal/cmake-action@main
         with:

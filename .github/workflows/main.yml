@@ -8,21 +8,26 @@ permissions:
 jobs:
   build-project:
     name: Build Project
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.2
 
-      - name: Get CMake
-        uses: symbitic/install-cmake@master
+      - name: Get mingw-w64
+        run: |
+          sudo apt-get install mingw-w64
 
       - name: Configure and Build Project
         uses: threeal/cmake-action@main
         with:
           source-dir: source
           build-dir: build
-          c-compiler: gcc
+          c-compiler: x86_64-w64-mingw32-gcc
           generator: Ninja
+
+      - name: Clean
+        run: |
+          ninja clean
       
       - name: Add & Commit
         run: |

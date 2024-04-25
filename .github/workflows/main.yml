@@ -28,5 +28,5 @@ jobs:
         run: |
           git config --global user.name "Actions"
           git add .
-          git commit --allow-empty-message
+          git commit --allow-empty-message --no-edit
           git push

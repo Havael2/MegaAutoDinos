@@ -6,8 +6,6 @@ project(MegaAutoDinos C)
 
 add_subdirectory(pilhadinos)
 
-add_library(pilhadinos pilhadinos.c pilhadinos.h)
-
 add_executable(MegaAutoDinos megaAutoDinos.c)
 
 target_include_directories(MegaAutoDinos PUBLIC

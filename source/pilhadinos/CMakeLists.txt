@@ -1,0 +1,1 @@
+add_library(pilhadinos pilhadinos.h pilhadinos.c)

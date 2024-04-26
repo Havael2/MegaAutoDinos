@@ -1,5 +1,6 @@
 #ifndef PILHADINOS_H
 #define PILHADINOS_H
+#include <stdio.h>
 #define MAX 21
 
 typedef struct{

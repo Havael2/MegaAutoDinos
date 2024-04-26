@@ -13,27 +13,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.2
 
-      - name: Get mingw-w64
-        run: |
-          sudo apt-get install -y gcc-mingw-w64-x86-64-win32
-
-      - name: install-ninja
-        run: |
-          sudo apt-get install -y ninja-build
+      - name: Get CMake
+        uses: symbitic/install-cmake@master
 
       - name: Configure and Build Project
         uses: threeal/cmake-action@main
         with:
           source-dir: source
           build-dir: build
-          c-compiler: x86_64-w64-mingw32-gcc
+          c-compiler: gcc
           generator: Ninja
           run-build: true
-          output: build/out
-
-      - name: Clean
-        run: |
-          ninja clean
       
       - name: Add & Commit
         run: |

@@ -15,7 +15,7 @@ jobs:
 
       - name: Get mingw-w64
         run: |
-          sudo apt-get install mingw-w64
+          sudo apt-get install gcc-mingw-w64-x86-64-win32
 
       - name: install-cmake
         uses: Symbitic/install-cmake@v0.1.0
@@ -27,6 +27,8 @@ jobs:
           build-dir: build
           c-compiler: x86_64-w64-mingw32-gcc
           generator: Ninja
+          run-build: true
+          output: build/out
 
       - name: Clean
         run: |

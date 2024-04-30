@@ -16,14 +16,21 @@ jobs:
       - name: Get CMake
         uses: symbitic/install-cmake@master
 
-      - name: Configure and Build Project
+      - name: Get Mingw-w64
+        run: "mingw.sh"
+
+      - name: Configure Project
         uses: threeal/cmake-action@main
         with:
           source-dir: source
           build-dir: build
-          c-compiler: gcc
+          c-compiler: BUILDROOT/gcc
           generator: Ninja
-          run-build: true
+          run-build: false
+          options: clean-first
+
+      - name: Build Project
+        run: "gcc -b x86_64-pc-mingw32"
       
       - name: Add & Commit
         run: |

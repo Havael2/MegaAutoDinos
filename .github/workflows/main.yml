@@ -17,14 +17,14 @@ jobs:
         uses: symbitic/install-cmake@master
 
       - name: Get Mingw-w64
-        run: "mingw.sh"
+        run: "${HOME}/mingw.sh"
 
       - name: Configure Project
         uses: threeal/cmake-action@main
         with:
           source-dir: source
           build-dir: build
-          c-compiler: BUILDROOT/gcc
+          c-compiler: ${HOME}/BUILDROOT/gcc
           generator: Ninja
           run-build: false
           options: clean-first

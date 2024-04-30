@@ -26,10 +26,11 @@ jobs:
           c-compiler: ${GITHUB_WORKSPACE}/BUILDROOT/gcc
           generator: Ninja
           run-build: false
-          args: --clean-first
 
       - name: Build Project
-        run: "gcc -b x86_64-pc-mingw32"
+        run: |
+          gcc -b x86_64-pc-mingw32
+          cmake clean
       
       - name: Add & Commit
         run: |

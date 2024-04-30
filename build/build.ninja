@@ -31,6 +31,18 @@ include rules.ninja
 
 
 #############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/runner/work/MegaAutoDinos/MegaAutoDinos/build && /home/runner/work/_temp/-1222185084/cmake-3.17.2-Linux-x86_64/bin/cmake-gui -S/home/runner/work/MegaAutoDinos/MegaAutoDinos/source -B/home/runner/work/MegaAutoDinos/MegaAutoDinos/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
@@ -52,6 +64,7 @@ build cmake_object_order_depends_target_MegaAutoDinos: phony || CMakeFiles/MegaA
 
 build CMakeFiles/MegaAutoDinos.dir/megaAutoDinos.c.o: C_COMPILER__MegaAutoDinos_ /home/runner/work/MegaAutoDinos/MegaAutoDinos/source/megaAutoDinos.c || cmake_object_order_depends_target_MegaAutoDinos
   DEP_FILE = CMakeFiles/MegaAutoDinos.dir/megaAutoDinos.c.o.d
+  INCLUDES = -I/home/runner/work/MegaAutoDinos/MegaAutoDinos/source
   OBJECT_DIR = CMakeFiles/MegaAutoDinos.dir
   OBJECT_FILE_DIR = CMakeFiles/MegaAutoDinos.dir
   TARGET_COMPILE_PDB = CMakeFiles/MegaAutoDinos.dir/
@@ -73,54 +86,8 @@ build MegaAutoDinos: C_EXECUTABLE_LINKER__MegaAutoDinos_ CMakeFiles/MegaAutoDino
   TARGET_FILE = MegaAutoDinos
   TARGET_PDB = MegaAutoDinos.pdb
 
-
-#############################################
-# Utility command for edit_cache
-
-build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/runner/work/MegaAutoDinos/MegaAutoDinos/build && /home/runner/work/_temp/-1222185084/cmake-3.17.2-Linux-x86_64/bin/cmake-gui -S/home/runner/work/MegaAutoDinos/MegaAutoDinos/source -B/home/runner/work/MegaAutoDinos/MegaAutoDinos/build
-  DESC = Running CMake cache editor...
-  pool = console
-  restat = 1
-
-build edit_cache: phony CMakeFiles/edit_cache.util
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target library
-
-
-#############################################
-# Order-only phony target for library
-
-build cmake_object_order_depends_target_library: phony || CMakeFiles/library.dir
-
-build CMakeFiles/library.dir/megaAutoDinos.c.o: C_COMPILER__library_ /home/runner/work/MegaAutoDinos/MegaAutoDinos/source/megaAutoDinos.c || cmake_object_order_depends_target_library
-  DEP_FILE = CMakeFiles/library.dir/megaAutoDinos.c.o.d
-  OBJECT_DIR = CMakeFiles/library.dir
-  OBJECT_FILE_DIR = CMakeFiles/library.dir
-  TARGET_COMPILE_PDB = CMakeFiles/library.dir/library.pdb
-  TARGET_PDB = liblibrary.pdb
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target library
-
-
-#############################################
-# Link the static library liblibrary.a
-
-build liblibrary.a: C_STATIC_LIBRARY_LINKER__library_ CMakeFiles/library.dir/megaAutoDinos.c.o
-  OBJECT_DIR = CMakeFiles/library.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/library.dir/library.pdb
-  TARGET_FILE = liblibrary.a
-  TARGET_PDB = liblibrary.pdb
-
 # =============================================================================
 # Target aliases.
-
-build library: phony liblibrary.a
 
 # =============================================================================
 # Folder targets.
@@ -130,7 +97,7 @@ build library: phony liblibrary.a
 #############################################
 # Folder: /home/runner/work/MegaAutoDinos/MegaAutoDinos/build
 
-build all: phony MegaAutoDinos liblibrary.a
+build all: phony MegaAutoDinos
 
 # =============================================================================
 # Built-in targets

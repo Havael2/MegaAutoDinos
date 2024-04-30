@@ -16,21 +16,16 @@ jobs:
         uses: symbitic/install-cmake@master
 
       - name: Get Mingw-w64
-        run: bash ${GITHUB_WORKSPACE}/mingw.sh
+        run: sudo apt-get install mingw-w64
 
       - name: Configure Project
         uses: threeal/cmake-action@main
         with:
           source-dir: source
           build-dir: build
-          c-compiler: ${GITHUB_WORKSPACE}/BUILDROOT/gcc
+          c-compiler: x86_64-w64-mingw32-gcc
           generator: Ninja
-          run-build: false
-
-      - name: Build Project
-        run: |
-          gcc -b x86_64-pc-mingw32
-          cmake clean
+          run-build: true
       
       - name: Add & Commit
         run: |

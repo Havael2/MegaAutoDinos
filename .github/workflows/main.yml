@@ -3,7 +3,7 @@ on:
   push:
   
 permissions:
-  contents: write|read
+  contents: write-all
     
 jobs:
   build-project:

@@ -2,8 +2,7 @@ name: Build
 on:
   push:
   
-permissions:
-  contents: write-all
+permissions: write-all
     
 jobs:
   build-project:

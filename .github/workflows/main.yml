@@ -16,7 +16,7 @@ jobs:
         uses: symbitic/install-cmake@master
 
       - name: Get Mingw-w64
-        run: "${GITHUB_WORKSPACE}/mingw.sh"
+        run: bash ${GITHUB_WORKSPACE}/mingw.sh
 
       - name: Configure Project
         uses: threeal/cmake-action@main

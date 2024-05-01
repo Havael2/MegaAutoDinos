@@ -3,7 +3,7 @@ name: Create Release
 on:
   push:
     branches:
-      - main  # Or specify your main branch here
+      - master  # Or specify your main branch here
 
 permissions:
     deployments: write
@@ -19,13 +19,6 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/MegaAutoDinos.exe
-          tag_name: v1.0.0  # Replace with your desired tag version
-          release_name: Release v1.0.0  # Replace with your desired release name
-          body: |
-            Describe your release here
-          draft: true
+          files: ${{ github.workspace }}/build/MegaAutoDinos.exe
           prerelease: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

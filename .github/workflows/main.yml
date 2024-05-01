@@ -26,9 +26,11 @@ jobs:
           c-compiler: x86_64-w64-mingw32-gcc
           generator: Ninja
           run-build: true
+
       
       - name: Add & Commit
         run: |
+          cmake clean
           git config --global user.name "Actions"
           git add .
           git commit --allow-empty-message --no-edit

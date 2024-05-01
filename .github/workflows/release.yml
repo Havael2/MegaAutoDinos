@@ -6,7 +6,7 @@ on:
 
 permissions:
     deployments: write
-    contents: read
+    contents: write
 
 jobs:
   attach-file:

@@ -30,7 +30,7 @@ jobs:
       
       - name: Add & Commit
         run: |
-          cmake clean
+          git clean -d -f -x
           git config --global user.name "Actions"
           git add .
           git commit --allow-empty-message --no-edit

@@ -1,21 +1,29 @@
-name: Attach File to Release
+name: Auto Attach File for Release
 
 on:
+  push:
+    branches:
+      - master  # Or specify your main branch here
   release:
-    types: [created, edited]
+    types: [published, edited]
 
 permissions:
     deployments: write
-    contents: write
+    contents: read
 
 jobs:
-  attach-file:
+  auto-attach-file:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
       
+      - name: Check if Release was Edited
+        id: release-check
+        run: echo "::set-output name=edited::${{ github.event_name == 'release' && github.event.action == 'edited' }}"
+      
       - name: Attach File to Release
+        if: steps.release-check.outputs.edited == 'true'
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}

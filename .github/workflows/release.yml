@@ -20,9 +20,8 @@ jobs:
       
       - name: Attach File to Release
         if: github.event_name == 'release' && github.event.action == 'edited'
-        uses: actions/upload-release-asset@v2.0.0
+        uses: uses: Shopify/upload-to-release@v2.0.0
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: build/MegaAutoDinos.exe
-          asset_name: MegaAutoDinos
-          token: ${{ secrets.GITHUB_TOKEN }}
+          path: build/MegaAutoDinos.exe
+          name: MegaAutoDinos
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

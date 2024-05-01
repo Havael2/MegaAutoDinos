@@ -20,7 +20,7 @@ jobs:
       
       - name: Attach File to Release
         if: github.event_name == 'release' && github.event.action == 'edited'
-        uses: actions/upload-release-asset@v2
+        uses: actions/upload-release-asset@v2.0.0
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: build/MegaAutoDinos.exe

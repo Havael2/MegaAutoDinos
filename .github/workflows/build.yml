@@ -2,7 +2,10 @@ name: Build
 
 on:
   push:
-    
+
+permissions:
+  content: write
+  
 jobs:
   build-project:
     name: Build Project
@@ -25,7 +28,6 @@ jobs:
           c-compiler: x86_64-w64-mingw32-gcc
           generator: Ninja
           run-build: true
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       
       - name: Add & Commit

@@ -4,6 +4,9 @@ on:
   release:
     types: [created]
 
+permissions:
+    deployments: write
+
 jobs:
   attach-file:
     runs-on: ubuntu-latest

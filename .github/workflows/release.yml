@@ -18,14 +18,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       
-      - name: Check if Release was Edited
-        id: release-check
-        run: echo "::set-output name=edited::${{ github.event_name == 'release' && github.event.action == 'edited' }}"
-      
       - name: Attach File to Release
-        if: steps.release-check.outputs.edited == 'true'
+        if: github.event_name == 'release' && github.event.action == 'edited'
         uses: actions/upload-release-asset@v1
         with:
-          path: build/MegaAutoDinos.exe
-          name: MegaAutoDinos.exe
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: build/MegaAutoDinos.exe
+          asset_name: MegaAutoDinos
+          token: ${{ secrets.GITHUB_TOKEN }}

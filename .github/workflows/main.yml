@@ -1,8 +1,6 @@
 name: Build
 on:
   push:
-  
-permissions: write-all
     
 jobs:
   build-project:
@@ -26,12 +24,35 @@ jobs:
           c-compiler: x86_64-w64-mingw32-gcc
           generator: Ninja
           run-build: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       
       - name: Add & Commit
         run: |
-          git clean -d -f -x
           git config --global user.name "Actions"
+          git clean -d -f -x
           git add .
           git commit --allow-empty-message --no-edit
           git push
+
+name: Attach File to Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  attach-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      
+      - name: Attach File to Release
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: build/MegaAutoDinos.exe
+          asset_name: MegaAutoDinos.exe
+          asset_content_type: application/octet-stream
+          token: ${{ secrets.GITHUB_TOKEN }}

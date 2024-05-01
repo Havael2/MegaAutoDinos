@@ -1,27 +1,31 @@
-name: Auto Attach File for Release
+name: Create Release
 
 on:
   push:
     branches:
-      - master  # Or specify your main branch here
-  release:
-    types: [published, edited]
+      - main  # Or specify your main branch here
 
 permissions:
     deployments: write
     contents: read
 
 jobs:
-  auto-attach-file:
+  create_release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
       
-      - name: Attach File to Release
-        if: github.event_name == 'release' && (github.event.action == 'edited' || github.event.action == 'created')
-        uses: Shopify/upload-to-release@v2.0.0
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
         with:
-          path: build/MegaAutoDinos.exe
-          name: MegaAutoDinos
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          files: build/MegaAutoDinos.exe
+          tag_name: v1.0.0  # Replace with your desired tag version
+          release_name: Release v1.0.0  # Replace with your desired release name
+          body: |
+            Describe your release here
+          draft: true
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

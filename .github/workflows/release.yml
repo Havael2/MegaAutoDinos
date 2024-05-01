@@ -30,3 +30,4 @@ jobs:
           asset_path: ./build/MegaAutoDinos.exe
           asset_name: MegaAutoDinos.exe
           asset_content_type: application/octet-stream
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

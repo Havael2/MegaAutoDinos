@@ -6,6 +6,7 @@ on:
 
 permissions:
     deployments: write
+    contents: read
 
 jobs:
   attach-file:
@@ -18,7 +19,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: build/MegaAutoDinos.exe
+          asset_path: ./build/MegaAutoDinos.exe
           asset_name: MegaAutoDinos.exe
           asset_content_type: application/octet-stream
           token: ${{ secrets.GITHUB_TOKEN }}

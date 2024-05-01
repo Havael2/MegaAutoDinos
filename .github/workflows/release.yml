@@ -2,7 +2,7 @@ name: Attach File to Release
 
 on:
   release:
-    types: [created]
+    types: [created, edited]
 
 permissions:
     deployments: write

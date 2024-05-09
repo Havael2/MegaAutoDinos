@@ -173,21 +173,21 @@ char *definirAdjetivo(int nA){ // Função que recebe um indice e retorna uma st
     if (nA==2)
         return "Flamejante";
     if (nA==3)
-	return "fofo";
+	    return "fofo";
     if (nA==4)
-	return "Sensivel";
+	    return "Sensivel";
     if (nA==5)
-	return "Feroz";
+	    return "Feroz";
     if (nA==6)
-	return "Sabio";
+	    return "Sabio";
     if (nA==7)
-	return "Saltitante";
+	    return "Saltitante";
     if (nA==8)
-	return "Cintilante";
+	    return "Cintilante";
     if (nA==9)
-	return "Majestoso";
+	    return "Majestoso";
     if (nA==10)
-	return "Alegre";
+	    return "Alegre";
 }
 
 void definirNome(char *nmG)

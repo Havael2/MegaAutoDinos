@@ -3,20 +3,21 @@
 #define NMAX 30
 
 typedef struct{
-	char nome[NMAX];
-	int registro;
-}Dinos;
+    int vida;
+    int dano;
+    char nome[30];
+} dinos;
 	
 typedef struct no{
-	Candidato inscricao;
+	dinos inscricao;
 	struct no *prox;	
-}Lista;	
+}Listadinos;	
 
 Lista *criar_lista();
 Lista *aloca_no();
-void inserir_no_fim(Lista **l, Candidato ins);
-int remover_no(Lista **l, Candidato rnc);
-Lista *buscar_no(Lista *l, Candidato busca);
+void inserir_no_fim(Lista **l, dinos ins);
+int remover_no(Lista **l, dinos rnc);
+Lista *buscar_no(Lista *l, dinos busca);
 int lista_vazia(Lista *l);
 void tamanho_lista(Lista *l, int *cont);
 void imprimir_lista(Lista *l);

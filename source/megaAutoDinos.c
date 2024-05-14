@@ -269,7 +269,7 @@ void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
 
     
 
-    while(!vazia_pilha(&grupo)&&!vazia_pilha(&op)){
+    while(vazia_pilha(&grupo)||vazia_pilha(&op)){
         pop(&grupo,&a);
         pop(&op,&b);
 

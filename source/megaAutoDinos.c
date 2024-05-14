@@ -258,8 +258,75 @@ void embaralharGrupo(tp_pilha *pGrupo) { // Funçao que gera os dinos na loja e 
    	}
 }
 
+void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
+    char temp[5];
+    dino a,b;
+    tp_pilha op;
+    inicializarPilha(&op);
+    while(!cheia_pilha(&op)){
+        push(op,especies(rand()%TAMesp));
+    }
+
+    
+
+    while(!vazia_pilha(grupo)&&!vazia_pilha(&op)){
+        a=pop(grupo);
+        b=pop(op);
+
+        system("clear");
+        printf("---BATALHA---\n");
+        printf("\n%s   VS   OPONENTES\n",nomeGrupo);
+        imprimirPilha(grupo);
+        printf("\n\n_____________________________\n\n");
+        imprimirPilha(op);
+
+        puts(temp);
+
+        system("clear");
+        printf("      %d\U1F44A|\U2764%d               %d\U1F44A|\U2764%d",);
+        printf("\n%s \U1F4A5 %s",);
+        a.vida-=b.dano;
+        b.vida-=a.dano;
+        printf("\n-----------\U2B07-----------\n      %d\U1F44A|\U2764%d               %d\U1F44A|\U2764%d",);
+        printf("\n%s \U1F4A5 %s",);
+
+        puts(temp);
+
+        if(a.vida>0) push(grupo,a); else printf("\n%s DERROTADO\U1FAE1	",a.nome);
+        if(b.vida>0) push(op,b); else printf("\n%s DERROTADO\U1FAE1	",b.nome);
+
+    }
+
+    if(vazia_pilha(grupo)){
+        system("clear");
+        for(i=coracao;i>0;i--)
+            printf("\U2764");
+        printf("\n");
+        sleep(500);
+        system("clear");
+        for(i=coracao-1;i>0;i--)
+            printf("\U2764");
+        printf("\U1F494");
+        sleep(500);
+        system("clear");
+        for(i=coracao-1;i>0;i--)
+            printf("\U2764");
+        printf("\U1FA78");
+        sleep(500);
+        system("clear");
+        for(i=coracao-1;i>0;i--)
+            printf("\U2764");
+        printf("\nMAIS SORTE NA PROXIMA... -1\U2764");
+        *coracao--;
+    }
+    if(vazia_pilha(op)){
+        printf("\nPARABENS!!!");
+    }
+}
+
 int main(){
     srand(time(NULL));
+    int coracao=5;
     char nomeGrupo[20];
     tp_pilha grupo;
     inicializarPilha(&grupo);
@@ -267,5 +334,8 @@ int main(){
     printf("Nome do grupo: %s", nomeGrupo);
     printf("\nComposicao do seu grupo:\n");
     embaralharGrupo(&grupo);
+    
+    batalha(grupo,nomeGrupo,&coracao);
+
     return 0;
 }

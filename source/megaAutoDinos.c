@@ -336,7 +336,7 @@ int main(){
     embaralharGrupo(&grupo);
     
 
-    while (!cheia_pilha(grupo))	{ //time aleatorio para testar batalha
+    while (!cheia_pilha(&grupo))	{ //time aleatorio para testar batalha
 		push(&grupo, especies(rand()%TAMesp));
 	}
     batalha(grupo,nomeGrupo,&coracao);

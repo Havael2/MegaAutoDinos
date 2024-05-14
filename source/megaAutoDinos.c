@@ -335,6 +335,10 @@ int main(){
     printf("\nComposicao do seu grupo:\n");
     embaralharGrupo(&grupo);
     
+
+    while (!cheia_pilha(pGrupo))	{ //time aleatorio para testar batalha
+		push(grupo, especies(rand()%TAMesp));
+	}
     batalha(grupo,nomeGrupo,&coracao);
 
     return 0;

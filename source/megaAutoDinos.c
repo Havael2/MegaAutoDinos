@@ -269,16 +269,16 @@ void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
 
     
 
-    while(!vazia_pilha(grupo)&&!vazia_pilha(&op)){
+    while(!vazia_pilha(&grupo)&&!vazia_pilha(&op)){
         pop(&grupo,&a);
         pop(&op,&b);
 
         system("clear");
         printf("---BATALHA---\n");
         printf("\n%s   VS   OPONENTES\n",nomeGrupo);
-        imprimirPilha(grupo);
+        imprimirPilha(&grupo);
         printf("\n\n_____________________________\n\n");
-        imprimirPilha(op);
+        imprimirPilha(&op);
 
         puts(temp);
 
@@ -297,7 +297,7 @@ void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
 
     }
 
-    if(vazia_pilha(grupo)){
+    if(vazia_pilha(&grupo)){
         system("clear");
         /*for(i=coracao;i>0;i--)
             printf("\U2764");

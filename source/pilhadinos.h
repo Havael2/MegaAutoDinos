@@ -61,7 +61,7 @@ int tamanho_pilha(tp_pilha *p){
 	return p->topo+1;
 }
 
-void imprimirPilha(tp_pilha p){
+void imprimirPilha(tp_pilha *p){
     int i;
     for(i=p->topo;i>=0;i--){	
     printf("Especie: %s ", p->animais[i].nome);

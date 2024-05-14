@@ -273,7 +273,7 @@ void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
         pop(&grupo,&a);
         pop(&op,&b);
 
-        system("clear");
+        system("clear||cls");
         printf("---BATALHA---\n");
         printf("\n%s   VS   OPONENTES\n",nomeGrupo);
         imprimirPilha(&grupo);
@@ -282,7 +282,7 @@ void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
 
         puts(temp);
 
-        system("clear");
+        system("clear||cls");
         printf("      %d\\U1F44A|\\U2764%d               %d\\U1F44A|\\U2764%d",a.dano,a.vida,b.dano,b.vida);
         printf("\n%s \\U1F4A5 %s",a.nome,b.nome);
         a.vida-=b.dano;
@@ -298,22 +298,22 @@ void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
     }
 
     if(vazia_pilha(&grupo)){
-        system("clear");
+        system("clear||cls");
         /*for(i=coracao;i>0;i--)
             printf("\U2764");
         printf("\n");
         sleep(500);
-        system("clear");
+        system("clear||cls");
         for(i=coracao-1;i>0;i--)
             printf("\U2764");
         printf("\U1F494");
         sleep(500);
-        system("clear");
+        system("clear||cls");
         for(i=coracao-1;i>0;i--)
             printf("\U2764");
         printf("\U1FA78");
         sleep(500);
-        system("clear");
+        system("clear||cls");
         for(i=coracao-1;i>0;i--)
             printf("\U2764");*/
         printf("\nMAIS SORTE NA PROXIMA... -1\\U2764");

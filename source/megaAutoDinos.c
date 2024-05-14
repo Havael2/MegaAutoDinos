@@ -280,7 +280,7 @@ void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
         printf("\n\n_____________________________\n\n");
         imprimirPilha(&op);
 
-        gets(temp);
+        gets(&temp);
 
         system("clear||cls");
         printf("      %d\\U1F44A|\\U2764%d               %d\\U1F44A|\\U2764%d",a.dano,a.vida,b.dano,b.vida);
@@ -290,7 +290,7 @@ void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
         printf("\n-----------\\U2B07-----------\n      %d\\U1F44A|\\U2764%d               %d\\U1F44A|\\U2764%d",a.dano,a.vida,b.dano,b.vida);
         printf("\n%s \\U1F4A5 %s",a.nome,b.nome);
 
-        gets(temp);
+        gets(&temp);
 
         if(a.vida>0) push(&grupo,a); else printf("\n%s DERROTADO\\U1FAE1	",a.nome);
         if(b.vida>0) push(&op,b); else printf("\n%s DERROTADO\\U1FAE1	",b.nome);

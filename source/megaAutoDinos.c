@@ -260,18 +260,18 @@ void embaralharGrupo(tp_pilha *pGrupo) { // Funçao que gera os dinos na loja e 
 
 void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
     char temp[5];
-    dino a,b;
+    dinos a,b;
     tp_pilha op;
     inicializarPilha(&op);
     while(!cheia_pilha(&op)){
-        push(op,especies(rand()%TAMesp));
+        push(&op,especies(rand()%TAMesp));
     }
 
     
 
     while(!vazia_pilha(grupo)&&!vazia_pilha(&op)){
-        a=pop(grupo);
-        b=pop(op);
+        pop(&grupo,&a);
+        pop(&op,&b);
 
         system("clear");
         printf("---BATALHA---\n");
@@ -283,23 +283,23 @@ void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
         puts(temp);
 
         system("clear");
-        printf("      %d\U1F44A|\U2764%d               %d\U1F44A|\U2764%d",);
-        printf("\n%s \U1F4A5 %s",);
+        printf("      %d\\U1F44A|\\U2764%d               %d\\U1F44A|\\U2764%d",a.dano,a.vida,b.dano,b.vida);
+        printf("\n%s \\U1F4A5 %s",a.nome,b.nome);
         a.vida-=b.dano;
         b.vida-=a.dano;
-        printf("\n-----------\U2B07-----------\n      %d\U1F44A|\U2764%d               %d\U1F44A|\U2764%d",);
-        printf("\n%s \U1F4A5 %s",);
+        printf("\n-----------\\U2B07-----------\n      %d\\U1F44A|\\U2764%d               %d\\U1F44A|\\U2764%d",a.dano,a.vida,b.dano,b.vida);
+        printf("\n%s \\U1F4A5 %s",a.nome,b.nome);
 
         puts(temp);
 
-        if(a.vida>0) push(grupo,a); else printf("\n%s DERROTADO\U1FAE1	",a.nome);
-        if(b.vida>0) push(op,b); else printf("\n%s DERROTADO\U1FAE1	",b.nome);
+        if(a.vida>0) push(&grupo,a); else printf("\n%s DERROTADO\\U1FAE1	",a.nome);
+        if(b.vida>0) push(&op,b); else printf("\n%s DERROTADO\\U1FAE1	",b.nome);
 
     }
 
     if(vazia_pilha(grupo)){
         system("clear");
-        for(i=coracao;i>0;i--)
+        /*for(i=coracao;i>0;i--)
             printf("\U2764");
         printf("\n");
         sleep(500);
@@ -315,11 +315,11 @@ void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
         sleep(500);
         system("clear");
         for(i=coracao-1;i>0;i--)
-            printf("\U2764");
-        printf("\nMAIS SORTE NA PROXIMA... -1\U2764");
+            printf("\U2764");*/
+        printf("\nMAIS SORTE NA PROXIMA... -1\\U2764");
         *coracao--;
     }
-    if(vazia_pilha(op)){
+    if(vazia_pilha(&op)){
         printf("\nPARABENS!!!");
     }
 }

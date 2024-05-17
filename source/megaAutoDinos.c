@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <Windows.h>
 #include "pilhadinos.h"
 #define TAMesp 21 // Deve estar de acordo com a quantidade de espécies já feitas. TAMesp será 21 ao final.
 #define TAMadj 11 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMadj será 11 ao final.
@@ -328,15 +327,6 @@ void batalha(tp_pilha grupo, char nomeGrupo[20], int *coracao) {
     printf("\nEMPATE...");
     
   }else if(vazia_pilha(&grupo)){
-    system("clear||cls");
-    for(int i=*coracao;i>0;i--)
-        printf("💖");
-    Sleep(500);
-    system("clear||cls");
-    for(int i=*coracao-1;i>0;i--)
-        printf("💖");
-    printf("💔");
-    Sleep(500);
     system("clear||cls");
     for(int i=*coracao-1;i>0;i--)
         printf("💖");

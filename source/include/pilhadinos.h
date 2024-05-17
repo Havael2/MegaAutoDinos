@@ -1,13 +1,8 @@
 #ifndef PILHADINOS_H
 #define PILHADINOS_H
 #include <stdio.h>
+#include "dinos.h"
 #define MAX 4
-
-typedef struct{
-    int vida;
-    int dano;
-    char nome[30];
-} dinos;
 
 typedef struct{
     int topo;

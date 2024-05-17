@@ -1,13 +1,8 @@
 #ifndef LISTA_H
 #define LISTA_H
 #define NMAX 30
+#include "dinos.h"
 
-typedef struct{
-    int vida;
-    int dano;
-    char nome[30];
-} dinos;
-	
 typedef struct no{
 	dinos inscricao;
 	struct no *prox;	

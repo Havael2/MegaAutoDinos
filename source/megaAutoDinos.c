@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <Windows.h>
 #include "pilhadinos.h"
 #define TAMesp 21 // Deve estar de acordo com a quantidade de espécies já feitas. TAMesp será 21 ao final.
 #define TAMadj 11 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMadj será 11 ao final.
@@ -258,70 +259,99 @@ void embaralharGrupo(tp_pilha *pGrupo) { // Funçao que gera os dinos na loja e 
    	}
 }
 
-void batalha(tp_pilha grupo,char nomeGrupo[20],int *coracao){
-    char temp[5];
-    dinos a,b;
-    tp_pilha op;
-    inicializarPilha(&op);
-    while(!cheia_pilha(&op)){
-        push(&op,especies(rand()%TAMesp));
-    }
+void batalha(tp_pilha grupo, char nomeGrupo[20], int *coracao) {
+  char temp[5],espaco[10]="",*espaco2;
+  dinos a, b;
+  tp_pilha op;
+  inicializarPilha(&op);
+  while (!cheia_pilha(&op)) {
+    push(&op, especies(rand() % TAMesp));
+  }
 
+  while (!(vazia_pilha(&grupo)||vazia_pilha(&op))) {
+    system("clear||cls");
+    printf("---BATALHA---\n");
+    printf("\n%s   VS   OPONENTES\n\n", nomeGrupo);
+    imprimirPilha(&grupo);
+    printf("\n_____________________________\n\n");
+    imprimirPilha(&op);
+
+    scanf(" %[^\n]",temp);
+
+    pop(&grupo, &a);
+    pop(&op, &b);
+
+    system("clear||cls");
+
+    for(int i=strlen(a.nome)/4;i>0;i--)
+      strcat(espaco," ");
+    espaco2=strdup(espaco);
+    for(int i=strlen(b.nome)/4+3;i>0;i--)
+      strcat(espaco2," ");
+
+    printf("%s👊%d|💕%d",espaco,a.dano,a.vida);
+    printf("%s👊%d|💕%d",espaco2,b.dano,b.vida);
+    printf("\n%s 💥 %s\n",a.nome,b.nome);
+
+    a.vida -= b.dano;
+    b.vida -= a.dano;
+
+    for(int i=strlen(a.nome)+1;i>0;i--)
+      printf("-");
+    printf("⬇⬇");
+    for(int i=strlen(b.nome)+1;i>0;i--)
+      printf("-");
+
+    printf("\n%s👊%d|💕%d",espaco,a.dano, a.vida);
+    printf("%s👊%d|💕%d",espaco2,b.dano, b.vida);
+    printf("\n%s 💥 %s\n", a.nome, b.nome);
+    free(espaco2);
+    strcpy(espaco,"");
+
+    if(a.vida > 0)
+      push(&grupo, a);
+    else
+      printf("\n%s DERROTADO", a.nome);
+    if(b.vida > 0)
+      push(&op, b);
+    else
+      printf("\n%s DERROTADO", b.nome);
+
+    scanf(" %[^\n]",temp);
+  }
+
+  if(vazia_pilha(&grupo)&&vazia_pilha(&op)){
+    system("clear||cls");
+    for(int i=*coracao;i>0;i--)
+        printf("💖");
     
+    printf("\nEMPATE...");
+    
+  }else if(vazia_pilha(&grupo)){
+    system("clear||cls");
+    for(int i=*coracao;i>0;i--)
+        printf("💖");
+    Sleep(500);
+    system("clear||cls");
+    for(int i=*coracao-1;i>0;i--)
+        printf("💖");
+    printf("💔");
+    Sleep(500);
+    system("clear||cls");
+    for(int i=*coracao-1;i>0;i--)
+        printf("💖");
 
-    while(vazia_pilha(&grupo)||vazia_pilha(&op)){
-        pop(&grupo,&a);
-        pop(&op,&b);
-
-        system("clear||cls");
-        printf("---BATALHA---\n");
-        printf("\n%s   VS   OPONENTES\n",nomeGrupo);
-        imprimirPilha(&grupo);
-        printf("\n\n_____________________________\n\n");
-        imprimirPilha(&op);
-
-        gets(temp);
-
-        system("clear||cls");
-        printf("      %d\\U1F44A|\\U2764%d               %d\\U1F44A|\\U2764%d",a.dano,a.vida,b.dano,b.vida);
-        printf("\n%s \\U1F4A5 %s",a.nome,b.nome);
-        a.vida-=b.dano;
-        b.vida-=a.dano;
-        printf("\n-----------\\U2B07-----------\n      %d\\U1F44A|\\U2764%d               %d\\U1F44A|\\U2764%d",a.dano,a.vida,b.dano,b.vida);
-        printf("\n%s \\U1F4A5 %s",a.nome,b.nome);
-
-        gets(temp);
-
-        if(a.vida>0) push(&grupo,a); else printf("\n%s DERROTADO\\U1FAE1	",a.nome);
-        if(b.vida>0) push(&op,b); else printf("\n%s DERROTADO\\U1FAE1	",b.nome);
-
-    }
-
-    if(vazia_pilha(&grupo)){
-        system("clear||cls");
-        /*for(i=coracao;i>0;i--)
-            printf("\U2764");
-        printf("\n");
-        sleep(500);
-        system("clear||cls");
-        for(i=coracao-1;i>0;i--)
-            printf("\U2764");
-        printf("\U1F494");
-        sleep(500);
-        system("clear||cls");
-        for(i=coracao-1;i>0;i--)
-            printf("\U2764");
-        printf("\U1FA78");
-        sleep(500);
-        system("clear||cls");
-        for(i=coracao-1;i>0;i--)
-            printf("\U2764");*/
-        printf("\nMAIS SORTE NA PROXIMA... -1\\U2764");
-        *coracao--;
-    }
-    if(vazia_pilha(&op)){
-        printf("\nPARABENS!!!");
-    }
+    printf("\nMAIS SORTE NA PROXIMA... -1💕");
+    *coracao--;
+    
+  }else if(vazia_pilha(&op)){
+    system("clear||cls");
+    for(int i=*coracao;i>0;i--)
+        printf("💖");
+    
+    printf("\nPARABENS!!!");
+    
+  }
 }
 
 int main(){

@@ -1,5 +1,5 @@
 # set minimum cmake version
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.7.2 FATAL_ERROR)
 
 # project name and language
 project(MegaAutoDinos C)

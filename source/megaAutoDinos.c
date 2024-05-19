@@ -4,19 +4,66 @@
 #include <time.h>
 #include "dinos.h"
 #include "nome.h"
+#include "listadinos.h"
 #include "pilhadinos.h"
 
-void embaralharGrupo(tp_pilha *pGrupo) { // Funçao que gera os dinos na loja e os imprimem
-	dinos e;
-	while (!cheia_pilha(pGrupo))	{ //gerar
-		push(pGrupo, especies(rand()%TAMesp));
+void embaralharGrupo(Listadinos **dloja, int n){ // Funçao que gera os dinos na loja e os imprimem
+	int i;
+	for(i=1;i<=n;i++){
+	inserir_no_fim(dloja, especies(rand()%TAMesp));	
 	}
-	while (!vazia_pilha(pGrupo)) { //imprimir
-		pop(pGrupo, &e);
-		printf("Especie: %s ", e.nome);
-    		printf("Vida: %d ", e.vida);
-    		printf("Dano: %d\n", e.dano);
-   	}
+}
+
+int loja(Listadinos **dgrupo){
+	Listadinos *loja;
+	int dinheiro=10;
+	char opcao;
+	
+	loja = criar_lista();
+	embaralharGrupo(&loja, 4);
+	
+	while(dinheiro > 0){
+	printf("Loja\n");
+	imprimir_lista(loja);	
+	printf("Time\n");
+	imprimir_lista(*dgrupo);	
+		
+	printf("Dinheiro - R$%d\n", dinheiro);	
+	printf("C - Efetuar uma compra na loja\n");	
+	printf("V - Realizar uma venda para a loja\n");	
+	printf("A - Atualizar a loja\n");
+	printf("Pressione qualquer outra tecla para iniciar a batalha\n");
+	printf("Escolha a sua opcao: ");	
+	scanf(" %c", &opcao);	
+	
+	switch(opcao){
+		
+	case 'c':	
+	if(dinheiro >= 3){
+	compra(&loja, dgrupo);
+	dinheiro-=3;	
+	}	
+	break;
+		
+	case 'v':
+	venda(dgrupo);
+	dinheiro++;
+	break;
+	
+	case 'a':	
+	destruir_lista(&loja);
+	embaralharGrupo(&loja, 4);
+	dinheiro--;
+	break;
+	
+	default:
+	if(tamanho_lista(*dgrupo) >= 2){
+	return 1;	
+	}	
+	break;	
+	}	
+		
+	}
 }
 
 void batalha(tp_pilha grupo, char nomeGrupo[20], int *coracao) {
@@ -49,22 +96,22 @@ void batalha(tp_pilha grupo, char nomeGrupo[20], int *coracao) {
     for(int i=strlen(b.nome)/4+3;i>0;i--)
       strcat(espaco2," ");
 
-    printf("%s👊%d|💕%d",espaco,a.dano,a.vida);
-    printf("%s👊%d|💕%d",espaco2,b.dano,b.vida);
-    printf("\n%s 💥 %s\n",a.nome,b.nome);
+    printf("%s??%d|??%d",espaco,a.dano,a.vida);
+    printf("%s??%d|??%d",espaco2,b.dano,b.vida);
+    printf("\n%s ?? %s\n",a.nome,b.nome);
 
     a.vida -= b.dano;
     b.vida -= a.dano;
 
     for(int i=strlen(a.nome)+1;i>0;i--)
       printf("-");
-    printf("⬇⬇");
+    printf("??");
     for(int i=strlen(b.nome)+1;i>0;i--)
       printf("-");
 
-    printf("\n%s👊%d|💕%d",espaco,a.dano, a.vida);
-    printf("%s👊%d|💕%d",espaco2,b.dano, b.vida);
-    printf("\n%s 💥 %s\n", a.nome, b.nome);
+    printf("\n%s??%d|??%d",espaco,a.dano, a.vida);
+    printf("%s??%d|??%d",espaco2,b.dano, b.vida);
+    printf("\n%s ?? %s\n", a.nome, b.nome);
     free(espaco2);
     strcpy(espaco,"");
 
@@ -83,22 +130,22 @@ void batalha(tp_pilha grupo, char nomeGrupo[20], int *coracao) {
   if(vazia_pilha(&grupo)&&vazia_pilha(&op)){
     system("clear||cls");
     for(int i=*coracao;i>0;i--)
-        printf("💖");
+        printf("??");
     
     printf("\nEMPATE...");
     
   }else if(vazia_pilha(&grupo)){
     system("clear||cls");
     for(int i=*coracao-1;i>0;i--)
-        printf("💖");
+        printf("??");
 
-    printf("\nMAIS SORTE NA PROXIMA... -1💕");
+    printf("\nMAIS SORTE NA PROXIMA... -1??");
     *coracao--;
     
   }else if(vazia_pilha(&op)){
     system("clear||cls");
     for(int i=*coracao;i>0;i--)
-        printf("💖");
+        printf("??");
     
     printf("\nPARABENS!!!");
     
@@ -109,20 +156,22 @@ int main(){
     srand(time(NULL));
     int coracao=5;
     char nomeGrupo[20];
-    tp_pilha grupo;
+    Listadinos *grupo;
+    tp_pilha time;
 
-    inicializarPilha(&grupo);
+    grupo = criar_lista();
+    inicializarPilha(time);
     definirNome(nomeGrupo);
 
-    printf("Nome do grupo: %s", nomeGrupo);
-    printf("\nComposicao do seu grupo:\n");
-
-    embaralharGrupo(&grupo);
-
+    printf("Nome do grupo: %s\n", nomeGrupo);
+	
+	loja(&grupo);
+	
+	
     while (!cheia_pilha(&grupo))	{ //time aleatorio para testar batalha
 		push(&grupo, especies(rand()%TAMesp));
 	}
     batalha(grupo,nomeGrupo,&coracao);
-
+	
     return 0;
 }

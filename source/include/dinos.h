@@ -1,8 +1,6 @@
 #ifndef DINOS_H
 #define DINOS_H
 #define TAMesp 21 // Deve estar de acordo com a quantidade de espécies já feitas. TAMesp será 21 ao final.
-#define TAMadj 11 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMadj será 11 ao final.
-#define TAMsubs 11 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMsubs será 11 ao final.
 
 typedef struct{
     int vida;

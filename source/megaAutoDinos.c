@@ -160,7 +160,7 @@ int main(){
     tp_pilha time;
 
     grupo = criar_lista();
-    inicializarPilha(time);
+    inicializarPilha(&time);
     definirNome(nomeGrupo);
 
     printf("Nome do grupo: %s\n", nomeGrupo);

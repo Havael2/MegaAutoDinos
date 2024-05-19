@@ -1,3 +1,6 @@
+#define TAMadj 11 // Deve estar de acordo com a quantidade de adjetivos já feitos. TAMadj será 11 ao final.
+#define TAMsubs 11 // Deve estar de acordo com a quantidade de substantivos já feitos. TAMsubs será 11 ao final.
+
 char *definirSubstantivo(int nS) { // Função que recebe um indice e retorna uma string que é o substantivo do nome do grupo
     if (nS==0)
         return "Vulcano";

@@ -4,36 +4,37 @@
 #include "dinos.h"
 
 typedef struct no{
-	dinos inscricao;
+	dinos dados;
 	struct no *prox;	
 }Listadinos;	
 
-Lista *criar_lista();
-Lista *aloca_no();
-void inserir_no_fim(Lista **l, dinos ins);
-int remover_no(Lista **l, dinos rnc);
-Lista *buscar_no(Lista *l, dinos busca);
-int lista_vazia(Lista *l);
-void tamanho_lista(Lista *l, int *cont);
-void imprimir_lista(Lista *l);
+Listadinos *criar_lista();
+Listadinos *aloca_no();
+void inserir_no_fim(Listadinos **l, dinos d);
+int remover_no(Listadinos **l, char dn[NMAX]);
+Listadinos *buscar_no(Listadinos *l, dinos busca);
+int lista_vazia(Listadinos *l);
+void tamanho_lista(Listadinos *l, int *cont);
+int inserir_por_posicao(Listadinos **l, dinos d, int posicao);
+void imprimir_lista(Listadinos *l);
 
 
-Lista *criar_lista(){
+Listadinos *criar_lista(){
 	return NULL;
 }
 
-Lista *aloca_no(){
-	Lista *NovoNo;
-	NovoNo = (Lista*) malloc(sizeof(Lista));
+Listadinos *aloca_no(){
+	Listadinos *NovoNo;
+	NovoNo = (Listadinos*) malloc(sizeof(Listadinos));
 	return NovoNo;
 }
 
-void inserir_no_fim(Lista **l, Candidato ins){
-	Lista *aux, *NovoNo;
+void inserir_no_fim(Listadinos **l, dinos d){
+	Listadinos *aux, *NovoNo;
 	aux = *l;
 	
 	NovoNo = aloca_no();
-	NovoNo->inscricao = ins;
+	NovoNo->dados = d;
 	NovoNo->prox = NULL;
 	
 	if(lista_vazia(*l)){
@@ -48,12 +49,12 @@ void inserir_no_fim(Lista **l, Candidato ins){
 	
 }
 
-void inserir_no_inicio(Lista **l, Candidato inc){
-	Lista *aux, *NovoNo;
+void inserir_no_inicio(Listadinos **l, dinos d){
+	Listadinos *aux, *NovoNo;
 	aux = *l;
 	
 	NovoNo = aloca_no();
-	NovoNo->inscricao = inc;
+	NovoNo->dados = d;
 	NovoNo->prox = NULL;
 	
 	if(lista_vazia(*l)){
@@ -65,12 +66,12 @@ void inserir_no_inicio(Lista **l, Candidato inc){
 	}
 }
 
-int remover_no(Lista **l, char rnc[NMAX]){
-	Lista *aux, *ant;
+int remover_no(Listadinos **l, char dn[NMAX]){
+	Listadinos *aux, *ant;
 	aux = *l;
 	ant = NULL;
 	
-	while(aux != NULL && strcmp(aux->inscricao.nome, rnc) != 0){
+	while(aux != NULL && strcmp(aux->dados.nome, dn) != 0){
 		ant = aux;
 		aux = aux->prox;
 	}
@@ -91,11 +92,11 @@ int remover_no(Lista **l, char rnc[NMAX]){
 	return 1;
 }
 
-Lista *buscar_no(Lista *l, char busca[NMAX]){
-	Lista *aux;
+Listadinos *buscar_no(Listadinos *l, char busca[NMAX]){
+	Listadinos *aux;
 	aux = l;
 	
-	while(aux != NULL && strcmp(aux->inscricao.nome, busca) != 0){
+	while(aux != NULL && strcmp(aux->dados.nome, busca) != 0){
 		aux = aux->prox;
 	}	
 
@@ -108,7 +109,7 @@ Lista *buscar_no(Lista *l, char busca[NMAX]){
 				
 }
 
-int lista_vazia(Lista *l){
+int lista_vazia(Listadinos *l){
 	if(l == NULL){
 	return 1;	
 	}
@@ -117,20 +118,22 @@ int lista_vazia(Lista *l){
 	}
 }
 
-void tamanho_lista(Lista *l, int *cont){
-	Lista *aux;
-	*cont = 0;
+int tamanho_lista(Listadinos *l){
+	Listadinos *aux;
+	int cont = 0;
 	aux = l;
 	
 	while(aux != NULL){
-	(*cont)++;
+	cont++;
 	aux = aux->prox;	
 	}
 	
+	return cont;
+	
 }
 
-void destruir_lista(Lista **l){
-	Lista *aux;
+void destruir_lista(Listadinos **l){
+	Listadinos *aux;
 	aux = *l;
 	
 	while(aux != NULL){
@@ -141,13 +144,13 @@ void destruir_lista(Lista **l){
 	*l = NULL;
 }
 
-int inserir_por_posicao(Lista **l, Candidato ip, int posicao){
-	Lista *aux, *NovoNo;	
+int inserir_por_posicao(Listadinos **l, dinos d, int posicao){
+	Listadinos *aux, *NovoNo;	
 	int cont = 1;
 	aux = *l;
 	
 	NovoNo = aloca_no();
-	NovoNo->inscricao = ip;
+	NovoNo->dados = d;
 	NovoNo->prox = NULL;
 	
 	if(posicao == 0 || lista_vazia(*l)){
@@ -172,13 +175,41 @@ int inserir_por_posicao(Lista **l, Candidato ip, int posicao){
 	}
 }
 
-void imprimir_lista(Lista *l){
-	Lista *aux;
+void compra(Listadinos **l1, Listadinos **l2){
+	Listadinos *aux;
+	int p;
+	char de[NMAX];
+	
+	printf("Digite o nome do dinossauro: ");
+	scanf(" %[^\n]s", &de);
+	
+	if(!lista_vazia(*l1)){
+	aux = buscar_no(*l1, de);	
+	}
+	
+	printf("Digite a posicao do dinossauro: ");
+	scanf("%d", &p);
+	inserir_por_posicao(l2, aux->dados, p);
+	remover_no(l1, de);
+}
+
+void venda(Listadinos **l){
+	char dv[NMAX];
+	
+	printf("Digite o nome do dinossauro: ");
+	scanf(" %[^\n]s", &dv);
+	
+	remover_no(l, dv);
+}
+
+void imprimir_lista(Listadinos *l){
+	Listadinos *aux;
 	aux = l;
 	
 	while(aux != NULL){
-	printf("Nome: %s ", aux->inscricao.nome);
-	printf("Registro: %d\n", aux->inscricao.registro);
+	printf("Nome: %s ", aux->dados.nome);
+	printf("Dano: %d ", aux->dados.dano);
+	printf("Vida: %d\n\n", aux->dados.vida);
 	aux = aux->prox;	
 	}	
 	

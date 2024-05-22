@@ -5,7 +5,6 @@
 #include "dinos.h"
 #include "nome.h"
 #include "listadinos.h"
-#include "pilhadinos.h"
 
 void embaralharGrupo(Listadinos **dloja, int n){ // Funçao que gera os dinos na loja e os imprimem
 	int i;
@@ -14,7 +13,7 @@ void embaralharGrupo(Listadinos **dloja, int n){ // Funçao que gera os dinos na
 	}
 }
 
-int loja(Listadinos **dgrupo){
+int loja(Listadinos **dgrupo){ // Função loja
 	Listadinos *loja;
 	int dinheiro=10;
 	char opcao;
@@ -22,16 +21,16 @@ int loja(Listadinos **dgrupo){
 	loja = criar_lista();
 	embaralharGrupo(&loja, 4);
 	
-	while(dinheiro > 0){
+	while(dinheiro >= 0){
 	printf("Loja\n");
 	imprimir_lista(loja);	
 	printf("Time\n");
 	imprimir_lista(*dgrupo);	
 		
 	printf("Dinheiro - R$%d\n", dinheiro);	
-	printf("C - Efetuar uma compra na loja\n");	
-	printf("V - Realizar uma venda para a loja\n");	
-	printf("A - Atualizar a loja\n");
+	printf("c - Efetuar uma compra na loja(cada dinossauro custa R$3)\n");	
+	printf("v - Realizar uma venda para a loja\n");	
+	printf("a - Atualizar a loja(custa R$1)\n");
 	printf("Pressione qualquer outra tecla para iniciar a batalha\n");
 	printf("Escolha a sua opcao: ");	
 	scanf(" %c", &opcao);	
@@ -40,8 +39,11 @@ int loja(Listadinos **dgrupo){
 		
 	case 'c':	
 	if(dinheiro >= 3){
-	compra(&loja, dgrupo);
+	compra(&loja, dgrupo); 
 	dinheiro-=3;	
+	}
+	else{
+	printf("DINHEIRO INSUFICIENTE\n");	
 	}	
 	break;
 		
@@ -50,16 +52,16 @@ int loja(Listadinos **dgrupo){
 	dinheiro++;
 	break;
 	
-	case 'a':	
+	case 'a':
+	if(dinheiro >= 1){
 	destruir_lista(&loja);
 	embaralharGrupo(&loja, 4);
-	dinheiro--;
+	dinheiro--;	
+	}	
 	break;
 	
 	default:
-	if(tamanho_lista(*dgrupo) >= 2){
-	return 1;	
-	}	
+	return 1;		
 	break;	
 	}	
 		

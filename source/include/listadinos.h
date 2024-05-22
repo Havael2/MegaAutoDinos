@@ -11,8 +11,8 @@ typedef struct no{
 Listadinos *criar_lista();
 Listadinos *aloca_no();
 void inserir_no_fim(Listadinos **l, dinos d);
-int remover_no(Listadinos **l, char dn[NMAX]);
-Listadinos *buscar_no(Listadinos *l, dinos busca);
+int remover_por_posicao(Listadinos **l, int p);
+Listadinos *busca_por_posicao(Listadinos *l, int p);
 int lista_vazia(Listadinos *l);
 void tamanho_lista(Listadinos *l, int *cont);
 int inserir_por_posicao(Listadinos **l, dinos d, int posicao);
@@ -66,14 +66,16 @@ void inserir_no_inicio(Listadinos **l, dinos d){
 	}
 }
 
-int remover_no(Listadinos **l, char dn[NMAX]){
+int remover_por_posicao(Listadinos **l, int p){
 	Listadinos *aux, *ant;
+	int cont=0;
 	aux = *l;
 	ant = NULL;
 	
-	while(aux != NULL && strcmp(aux->dados.nome, dn) != 0){
+	while(aux != NULL && p != cont){
 		ant = aux;
 		aux = aux->prox;
+		cont++;
 	}
 
 	if(lista_vazia(*l)){
@@ -92,12 +94,14 @@ int remover_no(Listadinos **l, char dn[NMAX]){
 	return 1;
 }
 
-Listadinos *buscar_no(Listadinos *l, char busca[NMAX]){
+Listadinos *busca_por_posicao(Listadinos *l, int p){
 	Listadinos *aux;
+	int cont=0;
 	aux = l;
 	
-	while(aux != NULL && strcmp(aux->dados.nome, busca) != 0){
+	while(aux != NULL && p != cont){
 		aux = aux->prox;
+		cont++;
 	}	
 
 		if(aux == NULL){
@@ -177,29 +181,27 @@ int inserir_por_posicao(Listadinos **l, dinos d, int posicao){
 
 void compra(Listadinos **l1, Listadinos **l2){
 	Listadinos *aux;
-	int p;
-	char de[NMAX];
+	int p1, p2;
 	
-	printf("Digite o nome do dinossauro: ");
-	scanf(" %[^\n]s", &de);
+	printf("Digite a posicao do dinossauro escolhido: ");
+	scanf("%d", &p1);
 	
 	if(!lista_vazia(*l1)){
-	aux = buscar_no(*l1, de);	
+	aux = busca_por_posicao(*l1, p1);	
 	}
 	
-	printf("Digite a posicao do dinossauro: ");
-	scanf("%d", &p);
-	inserir_por_posicao(l2, aux->dados, p);
-	remover_no(l1, de);
+	printf("Digite a posicao do dinossauro no time: ");
+	scanf("%d", &p2);
+	inserir_por_posicao(l2, aux->dados, p2);
+	remover_por_posicao(l1, p1);
 }
 
 void venda(Listadinos **l){
-	char dv[NMAX];
+	int p;
+	printf("Digite a posicao do dinossauro no time: ");
+	scanf("%d", &p);
 	
-	printf("Digite o nome do dinossauro: ");
-	scanf(" %[^\n]s", &dv);
-	
-	remover_no(l, dv);
+	remover_por_posicao(l, p);
 }
 
 void imprimir_lista(Listadinos *l){

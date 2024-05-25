@@ -1,14 +1,17 @@
 #ifndef DINOS_H
 #define DINOS_H
+
 #define TAMesp 21 // Deve estar de acordo com a quantidade de espécies já feitas. TAMesp será 21 ao final.
 
-typedef struct{
+#include <string.h>
+
+typedef struct {
     int vida;
     int dano;
     char nome[30];
 } dinos;
 
-dinos especies(int spc){ // Função que recebe um indice e retorna um "struct dinos" com as devidas informações de cada dino listadas abaixo
+dinos especies(int spc) { // Função que recebe um indice e retorna um "struct dinos" com as devidas informações de cada dino listadas abaixo
 
     dinos bicho;
 
@@ -140,4 +143,5 @@ dinos especies(int spc){ // Função que recebe um indice e retorna um "struct d
     }
     return bicho;
 }
+
 #endif

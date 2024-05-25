@@ -40,14 +40,20 @@ void batalha(tp_lista_dinos **grupo, char *nomeG) {
             remover_por_posicao(&clone_grupo, 0);
         if (bot->dados.vida <= 0)
             remover_por_posicao(&bot, 0);
-        if (clone_grupo == NULL && bot == NULL)
-            printf("\n\nFim da batalha\nResultado: EMPATE\n");
-        if (clone_grupo == NULL)
-            printf("\n\nFim da batalha\nResultado: DERROTA\n");
-        if (bot == NULL)
-            printf("\n\nFim da batalha\nResultado: VITORIA\n");
         rcont++;
         system("pause");
+    }
+    if (clone_grupo == NULL && bot == NULL) {
+        printf("\n\nFim da batalha\nResultado: EMPATE\n");
+        return;
+    }
+    if (clone_grupo == NULL){
+        printf("\n\nFim da batalha\nResultado: DERROTA\n");
+        return;
+    }
+    if (bot == NULL) {
+        printf("\n\nFim da batalha\nResultado: VITORIA\n");
+        return;
     }
 }
 

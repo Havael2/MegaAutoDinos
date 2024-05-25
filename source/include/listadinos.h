@@ -215,8 +215,8 @@ void imprimir_lista(tp_lista_dinos *l){
 	aux = l;
 	
 	while(aux != NULL){
-	printf("Nome: %s ", aux->dados.nome);
-	printf("Dano: %d ", aux->dados.dano);
+	printf("Nome: %s \n", aux->dados.nome);
+	printf("Dano: %d \n", aux->dados.dano);
 	printf("Vida: %d\n\n", aux->dados.vida);
 	aux = aux->prox;	
 	}	
@@ -250,6 +250,13 @@ tp_lista_dinos *copiar_lista(tp_lista_dinos *lista_original) {
     }
 
     return nova_lista;
+}
+
+void embaralharGrupo(tp_lista_dinos **dloja, int n) { // Funçao que gera os dinos na loja e os imprimem
+	int i;
+	for(i=1;i<=n;i++){
+	inserir_no_fim(dloja, especies(rand()%TAMesp));	
+	}
 }
 
 #endif	

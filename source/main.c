@@ -8,7 +8,6 @@
 //testes
 int main() {
     srand(time(NULL));
-    int coracao = 10, trofeis = 0;
     char nomeGrupo[40];
     tp_lista_dinos *grupo;  
     grupo = criar_lista();

@@ -30,7 +30,7 @@ char *definir_substantivo(int nS) { // Função que recebe um indice e retorna u
     if (nS==9)
         return "Meteoritos";
     if (nS==10)
-        return "Largatos";
+        return "Lagartos";
 }
 
 char *definir_adjetivo(int nA) { // Função que recebe um indice e retorna uma string que é o adjetivo do nome do grupo

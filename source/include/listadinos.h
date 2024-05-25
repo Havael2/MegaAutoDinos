@@ -1,36 +1,42 @@
-#ifndef LISTA_H
-#define LISTA_H
+#ifndef LISTADINOS_H
+#define LISTADINOS_H
+
 #define NMAX 30
+
+#include <stdlib.h>
+#include <stdio.h>
 #include "dinos.h"
+
+
 
 typedef struct no{
 	dinos dados;
 	struct no *prox;	
-}Listadinos;	
+}tp_lista_dinos;	
 
-Listadinos *criar_lista();
-Listadinos *aloca_no();
-void inserir_no_fim(Listadinos **l, dinos d);
-int remover_por_posicao(Listadinos **l, int p);
-Listadinos *busca_por_posicao(Listadinos *l, int p);
-int lista_vazia(Listadinos *l);
-void tamanho_lista(Listadinos *l, int *cont);
-int inserir_por_posicao(Listadinos **l, dinos d, int posicao);
-void imprimir_lista(Listadinos *l);
+tp_lista_dinos *criar_lista();
+tp_lista_dinos *aloca_no();
+void inserir_no_fim(tp_lista_dinos **l, dinos d);
+int remover_por_posicao(tp_lista_dinos **l, int p);
+tp_lista_dinos *busca_por_posicao(tp_lista_dinos *l, int p);
+int lista_vazia(tp_lista_dinos *l);
+int tamanho_lista(tp_lista_dinos *l);
+int inserir_por_posicao(tp_lista_dinos **l, dinos d, int posicao);
+void imprimir_lista(tp_lista_dinos *l);
 
 
-Listadinos *criar_lista(){
+tp_lista_dinos *criar_lista(){
 	return NULL;
 }
 
-Listadinos *aloca_no(){
-	Listadinos *NovoNo;
-	NovoNo = (Listadinos*) malloc(sizeof(Listadinos));
+tp_lista_dinos *aloca_no(){
+	tp_lista_dinos *NovoNo;
+	NovoNo = (tp_lista_dinos*) malloc(sizeof(tp_lista_dinos));
 	return NovoNo;
 }
 
-void inserir_no_fim(Listadinos **l, dinos d){
-	Listadinos *aux, *NovoNo;
+void inserir_no_fim(tp_lista_dinos **l, dinos d){
+	tp_lista_dinos *aux, *NovoNo;
 	aux = *l;
 	
 	NovoNo = aloca_no();
@@ -49,8 +55,8 @@ void inserir_no_fim(Listadinos **l, dinos d){
 	
 }
 
-void inserir_no_inicio(Listadinos **l, dinos d){
-	Listadinos *aux, *NovoNo;
+void inserir_no_inicio(tp_lista_dinos **l, dinos d){
+	tp_lista_dinos *aux, *NovoNo;
 	aux = *l;
 	
 	NovoNo = aloca_no();
@@ -66,8 +72,8 @@ void inserir_no_inicio(Listadinos **l, dinos d){
 	}
 }
 
-int remover_por_posicao(Listadinos **l, int p){
-	Listadinos *aux, *ant;
+int remover_por_posicao(tp_lista_dinos **l, int p){
+	tp_lista_dinos *aux, *ant;
 	int cont=0;
 	aux = *l;
 	ant = NULL;
@@ -94,8 +100,8 @@ int remover_por_posicao(Listadinos **l, int p){
 	return 1;
 }
 
-Listadinos *busca_por_posicao(Listadinos *l, int p){
-	Listadinos *aux;
+tp_lista_dinos *busca_por_posicao(tp_lista_dinos *l, int p){
+	tp_lista_dinos *aux;
 	int cont=0;
 	aux = l;
 	
@@ -113,7 +119,7 @@ Listadinos *busca_por_posicao(Listadinos *l, int p){
 				
 }
 
-int lista_vazia(Listadinos *l){
+int lista_vazia(tp_lista_dinos *l){
 	if(l == NULL){
 	return 1;	
 	}
@@ -122,8 +128,8 @@ int lista_vazia(Listadinos *l){
 	}
 }
 
-int tamanho_lista(Listadinos *l){
-	Listadinos *aux;
+int tamanho_lista(tp_lista_dinos *l){
+	tp_lista_dinos *aux;
 	int cont = 0;
 	aux = l;
 	
@@ -136,8 +142,8 @@ int tamanho_lista(Listadinos *l){
 	
 }
 
-void destruir_lista(Listadinos **l){
-	Listadinos *aux;
+void destruir_lista(tp_lista_dinos **l){
+	tp_lista_dinos *aux;
 	aux = *l;
 	
 	while(aux != NULL){
@@ -148,8 +154,8 @@ void destruir_lista(Listadinos **l){
 	*l = NULL;
 }
 
-int inserir_por_posicao(Listadinos **l, dinos d, int posicao){
-	Listadinos *aux, *NovoNo;	
+int inserir_por_posicao(tp_lista_dinos **l, dinos d, int posicao){
+	tp_lista_dinos *aux, *NovoNo;	
 	int cont = 1;
 	aux = *l;
 	
@@ -179,24 +185,24 @@ int inserir_por_posicao(Listadinos **l, dinos d, int posicao){
 	}
 }
 
-void compra(Listadinos **l1, Listadinos **l2){
-	Listadinos *aux;
+void compra(tp_lista_dinos **loja, tp_lista_dinos **grupo){
+	tp_lista_dinos *aux;
 	int p1, p2;
 	
-	printf("Digite a posicao do dinossauro escolhido: ");
+	printf("Digite a posicao do dinossauro a venda (0,1,...): ");
 	scanf("%d", &p1);
 	
-	if(!lista_vazia(*l1)){
-	aux = busca_por_posicao(*l1, p1);	
+	if(!lista_vazia(*loja)){
+	aux = busca_por_posicao(*loja, p1);	
 	}
 	
-	printf("Digite a posicao do dinossauro no time: ");
+	printf("Defina a posicao do dinossauro no time (0,1,...): ");
 	scanf("%d", &p2);
-	inserir_por_posicao(l2, aux->dados, p2);
-	remover_por_posicao(l1, p1);
+	inserir_por_posicao(grupo, aux->dados, p2);
+	remover_por_posicao(loja, p1);
 }
 
-void venda(Listadinos **l){
+void venda(tp_lista_dinos **l){
 	int p;
 	printf("Digite a posicao do dinossauro no time: ");
 	scanf("%d", &p);
@@ -204,8 +210,8 @@ void venda(Listadinos **l){
 	remover_por_posicao(l, p);
 }
 
-void imprimir_lista(Listadinos *l){
-	Listadinos *aux;
+void imprimir_lista(tp_lista_dinos *l){
+	tp_lista_dinos *aux;
 	aux = l;
 	
 	while(aux != NULL){
@@ -215,6 +221,35 @@ void imprimir_lista(Listadinos *l){
 	aux = aux->prox;	
 	}	
 	
+}
+
+tp_lista_dinos *copiar_lista(tp_lista_dinos *lista_original) {
+
+    if (lista_vazia(lista_original)) {
+        return criar_lista();  // Retorna uma lista vazia
+    }
+
+    tp_lista_dinos *aux_original = lista_original;
+    tp_lista_dinos *nova_lista; nova_lista = criar_lista();
+    tp_lista_dinos *aux_nova;  aux_nova = criar_lista();
+
+    // Cria o primeiro nó da nova lista
+    nova_lista = aloca_no();
+    nova_lista->dados = aux_original->dados;
+    nova_lista->prox = NULL;
+    aux_nova = nova_lista;
+    aux_original = aux_original->prox;
+
+    // Percorre o restante da lista original, copiando cada nó
+    while (aux_original != NULL) {
+        aux_nova->prox = aloca_no();
+        aux_nova = aux_nova->prox;
+        aux_nova->dados = aux_original->dados;
+        aux_nova->prox = NULL;
+        aux_original = aux_original->prox;
+    }
+
+    return nova_lista;
 }
 
 #endif	

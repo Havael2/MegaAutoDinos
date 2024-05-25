@@ -190,29 +190,29 @@ void compra(tp_lista_dinos **loja, tp_lista_dinos **grupo){
     int p1, p2;
 
     do {
-        printf("Digite a posicao do dinossauro a venda (1, 2, ...): ");
+        printf("Digite a posicao do dinossauro a venda (1, 2, ..., 5): ");
         scanf("%d", &p1);
-        if (p1 < 1) {
-            printf("A posicao do dinossauro nao pode ser menor que 1.\n");
+        if (p1 < 1 || p1 > 5) {
+            printf("A posicao do dinossauro nao pode ser menor que 1 ou maior que 5.\n");
         }
-    } while (p1 < 1);
+    } while (p1 < 1 || p1 > 5);
 
     if (!lista_vazia(*loja)) {
         aux = busca_por_posicao(*loja, p1);
     }
 
-   do {
-    printf("Defina a posicao do dinossauro no time (1, 2, ...): ");
-    scanf("%d", &p2);
-    if (p2 < 1) {
-        printf("A posicao do dinossauro no time nao pode ser menor que 1.\n");
-    }
-} while (p2 < 1);
+    do {
+        printf("Defina a posicao do dinossauro no time (1, 2, ..., 5): ");
+        scanf("%d", &p2);
+        if (p2 < 1 || p2 > 5) {
+            printf("A posicao do dinossauro no time nao pode ser menor que 1 ou maior que 5.\n");
+        }
+    } while (p2 < 1 || p2 > 5);
 
-inserir_por_posicao(grupo, aux->dados, p2);
-remover_por_posicao(loja, p1);
-
+    inserir_por_posicao(grupo, aux->dados, p2);
+    remover_por_posicao(loja, p1);
 }
+
 void venda(tp_lista_dinos **l){
 	int p;
 	printf("Digite a posicao do dinossauro no time (1,2,...): ");
@@ -268,6 +268,35 @@ void embaralharGrupo(tp_lista_dinos **dloja, int n) { // Funçao que gera os din
 	for(i=1;i<=n;i++){
 	inserir_no_fim(dloja, especies(rand()%TAMesp));	
 	}
+}
+
+void trocar_posicao(tp_lista_dinos **grupo) {
+    int posicao1, posicao2;
+    tp_lista_dinos *dinossauro1, *dinossauro2;
+
+    printf("Digite a posicao do primeiro dinossauro (1 a 5): ");
+    scanf("%d", &posicao1);
+    printf("Digite a posicao do segundo dinossauro (1 a 5): ");
+    scanf("%d", &posicao2);
+
+    if (posicao1 < 1 || posicao1 > 5 || posicao2 < 1 || posicao2 > 5) {
+        printf("Posicoes invalidas. Certifique-se de que as posicoes estao entre 1 e 5.\n");
+        return;
+    }
+
+    dinossauro1 = busca_por_posicao(*grupo, posicao1);
+    dinossauro2 = busca_por_posicao(*grupo, posicao2);
+
+    if (dinossauro1 == NULL || dinossauro2 == NULL) {
+        printf("Nao foi possivel encontrar um dinossauro em uma das posicoes especificadas.\n");
+        return;
+    }
+
+    dinos temp = dinossauro1->dados;
+    dinossauro1->dados = dinossauro2->dados;
+    dinossauro2->dados = temp;
+
+    printf("Dinossauros trocados de posicao com sucesso!\n");
 }
 
 #endif	

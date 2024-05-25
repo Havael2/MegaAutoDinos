@@ -57,7 +57,7 @@ void loja(tp_lista_dinos **dgrupo) { // Função loja
 	break;
 	
 	default:
-	return 1;		
+	return;		
 	break;	
 	}	
 		

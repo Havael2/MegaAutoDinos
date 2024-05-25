@@ -3,13 +3,6 @@
 
 #include "listadinos.h"
 
-void embaralharGrupo(tp_lista_dinos **dloja, int n) { // Funçao que gera os dinos na loja e os imprimem
-	int i;
-	for(i=1;i<=n;i++){
-	inserir_no_fim(dloja, especies(rand()%TAMesp));	
-	}
-}
-
 void loja(tp_lista_dinos **dgrupo) { // Função loja
 	tp_lista_dinos *loja;   loja = criar_lista();
 	int dinheiro=10;

@@ -74,7 +74,7 @@ void inserir_no_inicio(tp_lista_dinos **l, dinos d){
 
 int remover_por_posicao(tp_lista_dinos **l, int p){
 	tp_lista_dinos *aux, *ant;
-	int cont=0;
+	int cont=1;
 	aux = *l;
 	ant = NULL;
 	
@@ -102,7 +102,7 @@ int remover_por_posicao(tp_lista_dinos **l, int p){
 
 tp_lista_dinos *busca_por_posicao(tp_lista_dinos *l, int p){
 	tp_lista_dinos *aux;
-	int cont=0;
+	int cont=1;
 	aux = l;
 	
 	while(aux != NULL && p != cont){

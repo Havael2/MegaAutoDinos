@@ -4,9 +4,11 @@
 #include "listadinos.h"
 #include "batalha.h"
 #include "loja.h"
+#include "titulo.h"
 
 //testes
 int main() {
+	titulo();
     srand(time(NULL));
     char nomeGrupo[40];
     tp_lista_dinos *grupo;  

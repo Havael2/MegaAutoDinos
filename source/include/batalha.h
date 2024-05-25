@@ -6,12 +6,6 @@
 #include "dinos.h"
 #include <string.h>
 
-void definir_grupo_aleatorio(tp_lista_dinos *grupo) {
-    while(tamanho_lista(grupo) < 3) {
-        inserir_no_fim(&grupo, especies(rand() % TAMesp));
-    }
-}
-
 // batalha provisoria para a segunda entrega
 void batalha(tp_lista_dinos **grupo, char *nomeG) {
     
@@ -22,24 +16,36 @@ void batalha(tp_lista_dinos **grupo, char *nomeG) {
     bot = criar_lista();
     char nomeBot[40];
     definir_nome_aleatorio(nomeBot);
-    definir_grupo_aleatorio(bot);
+    embaralharGrupo(&bot, 3);
     
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("\n-------------------------------BATALHA 1-------------------------------\n");
     printf("\n            %s   VS   %s (bot)\n", nomeG, nomeBot);
     printf("\n-----------------------------------------------------------------------\n");
-    while (!(clone_grupo == NULL) || !(bot == NULL)) {
-        int rcont = 1;
-        printf("\nROUND %d\n", rcont);
-        printf("\n%s           %s\n", clone_grupo->dados.nome,  bot->dados.nome);
-        printf("%Vida: %d    VS     %d\n", clone_grupo->dados.vida,  bot->dados.vida); 
-        printf("%Dano: %d           %d\n", clone_grupo->dados.dano,  bot->dados.dano); 
+    system("pause");
+    int rcont = 1;
+    while (clone_grupo != NULL && bot != NULL) {
+        printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        printf("\n--Formacao do grupo %s--\n\n", nomeG);
+        imprimir_lista(clone_grupo);
+        printf("\n--Formacao do grupo: %s--\n\n", nomeBot);
+        imprimir_lista(bot);
         clone_grupo->dados.vida -= bot->dados.dano;
         bot->dados.vida -= clone_grupo->dados.dano;
+        printf("\n\nROUND %d\n", rcont);
+        printf("\n%s           %s\n", clone_grupo->dados.nome,  bot->dados.nome);
+        printf("\nVida: %d    VS     %d\n", clone_grupo->dados.vida,  bot->dados.vida); 
+        printf("\nDano: %d           %d\n", clone_grupo->dados.dano,  bot->dados.dano); 
         if (clone_grupo->dados.vida <= 0) 
             remover_por_posicao(&clone_grupo, 0);
         if (bot->dados.vida <= 0)
             remover_por_posicao(&bot, 0);
+        if (clone_grupo == NULL && bot == NULL)
+            printf("\n\nFim da batalha\nResultado: EMPATE\n");
+        if (clone_grupo == NULL)
+            printf("\n\nFim da batalha\nResultado: DERROTA\n");
+        if (bot == NULL)
+            printf("\n\nFim da batalha\nResultado: VITORIA\n");
         rcont++;
         system("pause");
     }

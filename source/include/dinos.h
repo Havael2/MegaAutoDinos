@@ -70,7 +70,7 @@ dinos especies(int spc) { // Função que recebe um indice e retorna um "struct 
         // Habilidade (opcional): Ao morrer, concede 3 de vida a todos os dinossauros em campo.
     }
     if (spc == 9) {
-        strcpy(bicho.nome, "Deinonychus");
+        strcpy(bicho.nome, "Marcio Soussa");
         bicho.vida = 13;
         bicho.dano = 4;
         // Habilidade (opcional): Pode atacar rapidamente, ignorando parte da defesa do inimigo.

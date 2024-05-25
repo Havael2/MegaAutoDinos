@@ -186,22 +186,33 @@ int inserir_por_posicao(tp_lista_dinos **l, dinos d, int posicao){
 }
 
 void compra(tp_lista_dinos **loja, tp_lista_dinos **grupo){
-	tp_lista_dinos *aux;
-	int p1, p2;
-	
-	printf("Digite a posicao do dinossauro a venda (1,2,...): ");
-	scanf("%d", &p1);
-	
-	if(!lista_vazia(*loja)){
-	aux = busca_por_posicao(*loja, p1);	
-	}
-	
-	printf("Defina a posicao do dinossauro no time (1,2,...): ");
-	scanf("%d", &p2);
-	inserir_por_posicao(grupo, aux->dados, p2);
-	remover_por_posicao(loja, p1);
-}
+    tp_lista_dinos *aux;
+    int p1, p2;
 
+    do {
+        printf("Digite a posicao do dinossauro a venda (1, 2, ...): ");
+        scanf("%d", &p1);
+        if (p1 < 1) {
+            printf("A posicao do dinossauro não pode ser menor que 1.\n");
+        }
+    } while (p1 < 1);
+
+    if (!lista_vazia(*loja)) {
+        aux = busca_por_posicao(*loja, p1);
+    }
+
+   do {
+    printf("Defina a posicao do dinossauro no time (1, 2, ...): ");
+    scanf("%d", &p2);
+    if (p2 < 1) {
+        printf("A posicao do dinossauro no time não pode ser menor que 1.\n");
+    }
+} while (p2 < 1);
+
+inserir_por_posicao(grupo, aux->dados, p2);
+remover_por_posicao(loja, p1);
+
+}
 void venda(tp_lista_dinos **l){
 	int p;
 	printf("Digite a posicao do dinossauro no time (1,2,...): ");

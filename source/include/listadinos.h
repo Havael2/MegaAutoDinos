@@ -189,14 +189,14 @@ void compra(tp_lista_dinos **loja, tp_lista_dinos **grupo){
 	tp_lista_dinos *aux;
 	int p1, p2;
 	
-	printf("Digite a posicao do dinossauro a venda (0,1,...): ");
+	printf("Digite a posicao do dinossauro a venda (1,2,...): ");
 	scanf("%d", &p1);
 	
 	if(!lista_vazia(*loja)){
 	aux = busca_por_posicao(*loja, p1);	
 	}
 	
-	printf("Defina a posicao do dinossauro no time (0,1,...): ");
+	printf("Defina a posicao do dinossauro no time (1,2,...): ");
 	scanf("%d", &p2);
 	inserir_por_posicao(grupo, aux->dados, p2);
 	remover_por_posicao(loja, p1);
@@ -204,7 +204,7 @@ void compra(tp_lista_dinos **loja, tp_lista_dinos **grupo){
 
 void venda(tp_lista_dinos **l){
 	int p;
-	printf("Digite a posicao do dinossauro no time: ");
+	printf("Digite a posicao do dinossauro no time (1,2,...): ");
 	scanf("%d", &p);
 	
 	remover_por_posicao(l, p);

@@ -77,12 +77,25 @@ void definir_nome(char *nmG) {
         printf("%d.%s\n", (i+1), definir_substantivo(iSubs[i]));
     }
 
-    int escolherAdj, escolherSubs;  //interface para escolher um adjetivo e um substantivo da lista gerada
-    printf("\nEscolha o adjetivo (1-3): ");
-    scanf("%d", &escolherAdj);
-    printf("Escolha o substantivo (1-3): ");
-    scanf("%d", &escolherSubs);
+    int escolherAdj, escolherSubs;
+    char buffer[100];
 
+    do {
+        printf("\nEscolha o adjetivo (1-3): ");
+        if (scanf("%d", &escolherAdj) != 1 || escolherAdj < 1 || escolherAdj > 3) {
+            printf("Opcao invalida. Escolha um numero entre 1 e 3.\n");
+            scanf("%s", buffer); // Limpa o buffer de entrada.
+        }
+    } while (escolherAdj < 1 || escolherAdj > 3);
+
+    do {
+        printf("Escolha o substantivo (1-3): ");
+        if (scanf("%d", &escolherSubs) != 1 || escolherSubs < 1 || escolherSubs > 3) {
+            printf("Opcao invalida. Escolha um numero entre 1 e 3.\n");
+            scanf("%s", buffer); // Limpa o buffer de entrada.
+        }
+    } while (escolherSubs < 1 || escolherSubs > 3);
+    
     char adjetivoEscolhido[20], substantivoEscolhido[20];
     switch (escolherAdj) {
         case 1:

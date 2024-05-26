@@ -24,7 +24,7 @@ void batalha(tp_lista_dinos **grupo, char *nomeG) {
     printf("\n            %s   VS   %s (bot)\n", nomeG, nomeBot);
     printf("\n-----------------------------------------------------------------------\n");
     system("pause");
-    while (clone_grupo != NULL|| bot != NULL) {
+    while (clone_grupo != NULL&& bot != NULL) {
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         printf("\n--Formacao do grupo %s--\n\n", nomeG);
         imprimir_lista(clone_grupo);

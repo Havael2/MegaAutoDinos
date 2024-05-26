@@ -156,14 +156,14 @@ void destruir_lista(tp_lista_dinos **l){
 
 int inserir_por_posicao(tp_lista_dinos **l, dinos d, int posicao){
 	tp_lista_dinos *aux, *NovoNo;	
-	int cont = 1;
+	int cont = 2;
 	aux = *l;
 	
 	NovoNo = aloca_no();
 	NovoNo->dados = d;
 	NovoNo->prox = NULL;
 	
-	if(posicao == 0 || lista_vazia(*l)){
+	if(posicao == 1 || lista_vazia(*l)){
 		NovoNo->prox = *l;
 		*l = NovoNo;
 		return 1;
@@ -174,7 +174,7 @@ int inserir_por_posicao(tp_lista_dinos **l, dinos d, int posicao){
 		cont++;
 	}
 	
-	if(aux == NULL || posicao < 0){
+	if(aux == NULL || posicao < 1){
 		free(NovoNo);
 		return 0;
 	}

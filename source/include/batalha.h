@@ -13,6 +13,7 @@ void batalha(tp_lista_dinos **grupo, char *nomeG) {
     clone_grupo = copiar_lista(*grupo);
     
     tp_lista_dinos *bot;
+    int rcont = 1;
     bot = criar_lista();
     char nomeBot[40];
     definir_nome_aleatorio(nomeBot);
@@ -23,23 +24,22 @@ void batalha(tp_lista_dinos **grupo, char *nomeG) {
     printf("\n            %s   VS   %s (bot)\n", nomeG, nomeBot);
     printf("\n-----------------------------------------------------------------------\n");
     system("pause");
-    int rcont = 1;
-    while (clone_grupo != NULL && bot != NULL) {
+    while (clone_grupo != NULL|| bot != NULL) {
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         printf("\n--Formacao do grupo %s--\n\n", nomeG);
         imprimir_lista(clone_grupo);
         printf("\n--Formacao do grupo: %s--\n\n", nomeBot);
         imprimir_lista(bot);
-        clone_grupo->dados.vida -= bot->dados.dano;
-        bot->dados.vida -= clone_grupo->dados.dano;
         printf("\n\nROUND %d\n", rcont);
         printf("\n%s           %s\n", clone_grupo->dados.nome,  bot->dados.nome);
         printf("\nVida: %d    VS     %d\n", clone_grupo->dados.vida,  bot->dados.vida); 
         printf("\nDano: %d           %d\n", clone_grupo->dados.dano,  bot->dados.dano); 
+        clone_grupo->dados.vida -= bot->dados.dano;
+        bot->dados.vida -= clone_grupo->dados.dano;
         if (clone_grupo->dados.vida <= 0) 
-            remover_por_posicao(&clone_grupo, 0);
+            remover_por_posicao(&clone_grupo, 1);
         if (bot->dados.vida <= 0)
-            remover_por_posicao(&bot, 0);
+            remover_por_posicao(&bot, 1);
         rcont++;
         system("pause");
     }

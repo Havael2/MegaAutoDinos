@@ -185,7 +185,7 @@ int inserir_por_posicao(tp_lista_dinos **l, dinos d, int posicao){
 	}
 }
 
-void compra(tp_lista_dinos **loja, tp_lista_dinos **grupo){
+void compra(tp_lista_dinos **loja, tp_lista_dinos **grupo) {
     tp_lista_dinos *aux;
     int p1, p2;
 

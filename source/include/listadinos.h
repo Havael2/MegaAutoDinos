@@ -227,8 +227,8 @@ void imprimir_lista(tp_lista_dinos *l){
 	
 	while(aux != NULL){
 	printf("Nome: %s \n", aux->dados.nome);
-	printf("Dano: %d \n", aux->dados.dano);
-	printf("Vida: %d\n\n", aux->dados.vida);
+	printf("Vida: %d \n", aux->dados.vida);
+	printf("Dano: %d\n\n", aux->dados.dano);
 	aux = aux->prox;	
 	}	
 	
@@ -288,7 +288,7 @@ void trocar_posicao(tp_lista_dinos **grupo) {
     dinossauro2 = busca_por_posicao(*grupo, posicao2);
 
     if (dinossauro1 == NULL || dinossauro2 == NULL) {
-        printf("Nao foi possivel encontrar um dinossauro em uma das posicoes especificadas.\n");
+        printf("Nao foi possivel encontrar um dinossauro nessa posicao.\n");
         return;
     }
 
@@ -296,7 +296,7 @@ void trocar_posicao(tp_lista_dinos **grupo) {
     dinossauro1->dados = dinossauro2->dados;
     dinossauro2->dados = temp;
 
-    printf("Dinossauros trocados de posicao com sucesso!\n");
+    printf("Dinossauros trocados de posicao!\n");
 }
 
 #endif	

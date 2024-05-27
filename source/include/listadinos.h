@@ -190,10 +190,10 @@ void compra(tp_lista_dinos **loja, tp_lista_dinos **grupo) {
     int p1, p2;
 
     do {
-        printf("Digite a posicao do dinossauro a venda (1, 2, ..., 5): ");
+        printf("Digite a posicao do dinossauro a venda (1-4): ");
         scanf("%d", &p1);
         if (p1 < 1 || p1 > 5) {
-            printf("A posicao do dinossauro nao pode ser menor que 1 ou maior que 5.\n");
+            printf("A posicao do dinossauro nao pode ser menor que 1 ou maior que 4.\n");
         }
     } while (p1 < 1 || p1 > 5);
 
@@ -202,7 +202,7 @@ void compra(tp_lista_dinos **loja, tp_lista_dinos **grupo) {
     }
 
     do {
-        printf("Defina a posicao do dinossauro no time (1, 2, ..., 5): ");
+        printf("Defina a posicao do dinossauro no time (1-5): ");
         scanf("%d", &p2);
         if (p2 < 1 || p2 > 5) {
             printf("A posicao do dinossauro no time nao pode ser menor que 1 ou maior que 5.\n");
@@ -274,9 +274,9 @@ void trocar_posicao(tp_lista_dinos **grupo) {
     int posicao1, posicao2;
     tp_lista_dinos *dinossauro1, *dinossauro2;
 
-    printf("Digite a posicao do primeiro dinossauro (1 a 5): ");
+    printf("Digite a posicao do primeiro dinossauro (1-5): ");
     scanf("%d", &posicao1);
-    printf("Digite a posicao do segundo dinossauro (1 a 5): ");
+    printf("Digite a posicao do segundo dinossauro (1-5): ");
     scanf("%d", &posicao2);
 
     if (posicao1 < 1 || posicao1 > 5 || posicao2 < 1 || posicao2 > 5) {

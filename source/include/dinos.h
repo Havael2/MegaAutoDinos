@@ -1,17 +1,18 @@
 #ifndef DINOS_H
 #define DINOS_H
 
-#define TAMesp 21 // Deve estar de acordo com a quantidade de espécies já feitas. TAMesp será 21 ao final.
+#define TAMesp 21 // Deve estar de acordo com a quantidade de espÃ©cies jÃ¡ feitas. TAMesp serÃ¡ 21 ao final.
+#define NMAX 30
 
 #include <string.h>
 
 typedef struct {
     int vida;
     int dano;
-    char nome[30];
+    char nome[NMAX];
 } dinos;
 
-dinos especies(int spc) { // Função que recebe um indice e retorna um "struct dinos" com as devidas informações de cada dino listadas abaixo
+dinos especies(int spc) { // FunÃ§Ã£o que recebe um indice e retorna um "struct dinos" com as devidas informaÃ§Ãµes de cada dino listadas abaixo
 
     dinos bicho;
 
@@ -19,13 +20,13 @@ dinos especies(int spc) { // Função que recebe um indice e retorna um "struct 
         strcpy(bicho.nome, "Tiranossauro Rex");
         bicho.vida = 12;
         bicho.dano = 17;
-        // Habilidade(opcional): Dá 2 de dano aos aliados adjacentes a cada rodada.
+        // Habilidade(opcional): DÃ¡ 2 de dano aos aliados adjacentes a cada rodada.
     }
     if (spc == 1) {
         strcpy(bicho.nome, "Velociraptor");
         bicho.vida = 4;
         bicho.dano = 3;
-        // Habilidade (opcional): Ao morrer, invoca mais 2 velociraptors caso haja espaço.
+        // Habilidade (opcional): Ao morrer, invoca mais 2 velociraptors caso haja espaÃ§o.
     }
     if (spc == 2) {
         strcpy(bicho.nome, "Triceratops");
@@ -49,7 +50,7 @@ dinos especies(int spc) { // Função que recebe um indice e retorna um "struct 
         strcpy(bicho.nome, "Spinosaurus");
         bicho.vida = 9 ;
         bicho.dano = 2;
-        // Habilidade (opcional): Causa 1 de dano em algum inimigo aleatório
+        // Habilidade (opcional): Causa 1 de dano em algum inimigo aleatÃ³rio
     }
     if (spc == 6) {
         strcpy(bicho.nome, "Anquilossauro");
@@ -91,7 +92,7 @@ dinos especies(int spc) { // Função que recebe um indice e retorna um "struct 
         strcpy(bicho.nome, "Iguanodon");
         bicho.vida = 5;
         bicho.dano = 7;
-        // Habilidade (opcional): Ao morrer, diminui a armadura do oponente em 2 ( ele sofrerá 2 de dano a mais)
+        // Habilidade (opcional): Ao morrer, diminui a armadura do oponente em 2 ( ele sofrerÃ¡ 2 de dano a mais)
     }	    
     if (spc == 13) {
         strcpy(bicho.nome, "Carnotaurus");
@@ -121,7 +122,7 @@ dinos especies(int spc) { // Função que recebe um indice e retorna um "struct 
         strcpy(bicho.nome, "Megalosaurus");
         bicho.vida = 12;
         bicho.dano = 8;
-        // Habilidade (opcional): Ataques em inimigos são ricocheteados e causam 2 de dano em um aliado aleatório.
+        // Habilidade (opcional): Ataques em inimigos sÃ£o ricocheteados e causam 2 de dano em um aliado aleatÃ³rio.
     }
     if (spc == 18) {
         strcpy(bicho.nome, "Therizinosaurus");
@@ -133,13 +134,13 @@ dinos especies(int spc) { // Função que recebe um indice e retorna um "struct 
         strcpy(bicho.nome, "Troodon");
         bicho.vida = 3;
         bicho.dano = 6;
-        // Habilidade (opcional): Invocações aliadas recebem 2 de ataque e vida.
+        // Habilidade (opcional): InvocaÃ§Ãµes aliadas recebem 2 de ataque e vida.
     }
     if (spc == 20) {
         strcpy(bicho.nome, "Pachycephalosaurus");
         bicho.vida = 6;
         bicho.dano = 3;
-        // Habilidade (opcional): Ao ser comprado, presenteia 2 aliados aleatórios com 3 de vida e ataque.
+        // Habilidade (opcional): Ao ser comprado, presenteia 2 aliados aleatÃ³rios com 3 de vida e ataque.
     }
     return bicho;
 }

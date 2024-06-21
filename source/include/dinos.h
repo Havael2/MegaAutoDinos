@@ -72,7 +72,7 @@ dinos especies(int spc) { // FunÃ§Ã£o que recebe um indice e retorna um "str
         bicho.vida = 7;
         bicho.dano = 2;
         //bicho.hab = spc;
-        // Habilidade (opcional): Cospe veneno, dando 2 de dano entra a cada rodada.
+        // Habilidade (opcional): Cospe veneno, dando 2 de dano extra a cada rodada.
     }
     if (spc == 8) {
         strcpy(bicho.nome, "Brachiosaurus");

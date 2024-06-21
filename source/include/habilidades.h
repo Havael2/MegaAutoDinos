@@ -3,85 +3,92 @@
 #include "dinos.h"
 #include "batalha.h"
 
-typedef struct arv{
-
+void tabelaL(no *dino, tp_lista_dinos *grupo, tp_lista_dinos *desaf){
+    if(dino->hab==20)
+        pachy(grupo,desaf);
+    else
+        printf('\nhabilidade invalida');
 }
 
-void tabelaL(tp_lista_dinos *clone_grupo){
-    switch(clone_grupo->dados.hab){
-        case 20:
-            pachy(clone_grupo);
+void tabela0(no *dino, tp_lista_dinos *grupo, tp_lista_dinos *desaf){
+    switch(dino->hab){
+        case 3:
+            ptera(grupo,desaf);
         break;
+        case 7:
+            dilopho(grupo,desaf);
+        break;
+        case 11:
+            archa(grupo,desaf);
+        break;
+        case 16:
+            ouran(grupo,desaf);
+        break;
+        default:
+            printf('\nhabilidade invalida');
     }
 }
 
-void tabela0(tp_lista_dinos *clone_grupo){
-    case 3:
-        ptera(clone_grupo);
-    break;
-    case 7:
-        dilopho(clone_grupo);
-    break;
-    case 11:
-        archa(clone_grupo);
-    break;
-    case 16:
-        ouran(clone_grupo);
-    break;
+void tabela1(no *dino, tp_lista_dinos *grupo, tp_lista_dinos *desaf){
+    switch(dino->hab){
+        case 2:
+            tric(grupo,desaf);
+        break;
+        case 5:
+            spino(grupo,desaf);
+        break;
+        case 6:
+            anqui(grupo,desaf);
+        break;
+        case 9:
+            suss(grupo,desaf);
+        break;
+        case 13:
+            carnot(grupo,desaf);
+        break;
+        case 14:
+            amarg(grupo,desaf);
+        break;
+        case 17:
+            megalo(grupo,desaf);
+        break;
+        default:
+            printf('\nhabilidade invalida');
+    }
 }
 
-void tabela1(tp_lista_dinos *clone_grupo){
-    case 2:
-        tric(clone_grupo);
-    break;
-    case 5:
-        spino(clone_grupo);
-    break;
-    case 6:
-        anqui(clone_grupo);
-    break;
-    case 9:
-        suss(clone_grupo);
-    break;
-    case 13:
-        carnot(clone_grupo);
-    break;
-    case 14:
-        amarg(clone_grupo);
-    break;
-    case 17:
-        megalo(clone_grupo);
-    break;
-}
-
-void tabela2(tp_lista_dinos *clone_grupo){
-    case 0:
-        trex(clone_grupo);
-    break;
-    case 1:
-        veloc(clone_grupo);
-    break;
-    case 4:
-        steg(clone_grupo);
-    break;
-    case 8:
-        brach(clone_grupo);
-    break;
-    case 10:
-        allo(clone_grupo);
-    break;
-    case 12:
-        igua(clone_grupo);
-    break;
-    case 15:
-        cerat(clone_grupo);
-    break;
-    case 18:
-        teriz(clone_grupo);
-    break;
-    case 19:
-        trood(clone_grupo);
-    break;
+void tabela2(no *dino, tp_lista_dinos *grupo, tp_lista_dinos *desaf){
+    switch(dino->hab){
+        case 0:
+            trex(grupo,desaf);
+        break;
+        case 1:
+            veloc(grupo,desaf);
+        break;
+        case 4:
+            steg(grupo,desaf);
+        break;
+        case 8:
+            brach(grupo,desaf);
+        break;
+        case 10:
+            allo(grupo,desaf);
+        break;
+        case 12:
+            igua(grupo,desaf);
+        break;
+        case 15:
+            cerat(grupo,desaf);
+        break;
+        case 18:
+            teriz(grupo,desaf);
+        break;
+        case 19:
+            trood(grupo,desaf);
+        break;
+        default:
+            printf('\nhabilidade invalida');
+    }
 }
 
 void trex();

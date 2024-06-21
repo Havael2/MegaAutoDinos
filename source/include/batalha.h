@@ -32,8 +32,19 @@ void batalha(tp_lista_dinos **grupo, char *nomeG) {
         imprimir_lista(clone_grupo);
         printf("\n--Formacao do grupo: %s--\n\n", nomeBot);
         imprimir_lista(bot);
+
+        tabela0(clone_grupo->dados,clone_grupo,bot);
+        tabela0(bot->dados,clone_grupo,bot);
+
+        tabela1(clone_grupo->dados,clone_grupo,bot);
+        tabela1(bot->dados,clone_grupo,bot);
+
         clone_grupo->dados.vida -= bot->dados.dano;
         bot->dados.vida -= clone_grupo->dados.dano;
+
+        tabela2(clone_grupo->dados,clone_grupo,bot);
+        tabela2(bot->dados,clone_grupo,bot);
+        
         printf("\n\nROUND %d\n", rcont);
         printf("\n%s      VS     %s\n", clone_grupo->dados.nome,  bot->dados.nome);
         printf("\nVida: %d           %d\n", clone_grupo->dados.vida,  bot->dados.vida); 

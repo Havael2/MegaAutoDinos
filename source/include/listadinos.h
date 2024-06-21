@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "dinos.h"
+#include "habilidades.h"
 
 typedef struct no{
 	dinos dados;
@@ -235,6 +236,7 @@ void compra(tp_lista_dinos *loja, tp_lista_dinos *grupo) {
 
     inserir_por_posicao(grupo, aux->dados, p2);
     remover_por_posicao(loja, p1);
+	tabelaL(aux);
 }
 
 void venda(tp_lista_dinos *l){

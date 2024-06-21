@@ -4,6 +4,7 @@
 #include "listadinos.h"
 #include "nomegrupo.h"
 #include "dinos.h"
+#include "habilidades.h"
 #include <string.h>
 
 // batalha provisoria para a segunda entrega
@@ -25,6 +26,7 @@ void batalha(tp_lista_dinos **grupo, char *nomeG) {
     printf("\n-----------------------------------------------------------------------\n");
     system("pause");
     while (clone_grupo != NULL && bot != NULL) {
+        //tabelaH(clone_grupo->dados.hab);
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         printf("\n--Formacao do grupo %s--\n\n", nomeG);
         imprimir_lista(clone_grupo);

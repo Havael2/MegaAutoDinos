@@ -312,9 +312,6 @@ void comida(tp_lista_dinos *grupo){
 		if(aux->ant != NULL){
 		aux->ant->dados.vida+=1;	
 		}
-		if(aux->ant->ant != NULL){
-		aux->ant->ant->dados.vida+=1;	
-		}
 		break;
 		
 		case 'p':

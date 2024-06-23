@@ -10,7 +10,6 @@ typedef struct {
     int vida;
     int dano;
     //int hab;
-    char nome[30];
     char nome[NMAX];
 } dinos;
 

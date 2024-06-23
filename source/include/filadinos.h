@@ -2,19 +2,19 @@
 #define FILASE_H
 #include "dinos.h"
 
-typedef struct no{
-	dino dados;
-	struct no *prox;
-}no;	
+typedef struct nof{
+	dinofs dados;
+	struct nof *prox;
+}nof;	
 
 typedef struct{
-	no *ini;
-	no *fim;
+	nof *ini;
+	nof *fim;
 	int tam;	
 }FilaSE;
 
 FilaSE *criar_filase();
-no *aloca_no();
+nof *aloca_nof();
 void enfileirase(FilaSE *f, dino e);
 int desenfileirase(FilaSE *f, dino *r);
 int filase_vazia(FilaSE *f);
@@ -30,31 +30,31 @@ FilaSE *criar_filase(){
 	return fila;	
 }
 
-no *aloca_no(){
-	no *f;
-	f = (no*) malloc(sizeof(no));
+nof *aloca_nof(){
+	nof *f;
+	f = (nof*) malloc(sizeof(nof));
 	return f;
 }
 
 void enfileirase(FilaSE *f, dino e){
-	no *NovoNo;
+	nof *nofvonof;
 	
-	NovoNo = aloca();
-	NovoNo->dados = e;
-	NovoNo->prox = NULL;
+	nofvonof = aloca();
+	nofvonof->dados = e;
+	nofvonof->prox = NULL;
 	
 	if(filase_vazia(f)){
-	f->ini = NovoNo;
+	f->ini = nofvonof;
 	}
 	else{
-	f->fim->prox = NovoNo;	
+	f->fim->prox = nofvonof;	
 	}
-	f->fim = NovoNo;
+	f->fim = nofvonof;
 	f->tam++;
 }
 
 int desenfileirase(FilaSE *f, dino *r){
-	no *aux;
+	nof *aux;
 	
 	if(filase_vazia(f)){
 	return 0;	
@@ -83,7 +83,7 @@ int filase_vazia(FilaSE *f){
 }
 
 FilaSE *destruir_fila(FilaSE *f){
-	no *aux;
+	nof *aux;
 	dino d;
 	aux = f->ini;
 	

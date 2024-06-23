@@ -1,7 +1,6 @@
 #ifndef LISTADINOS_H
 #define LISTADINOS_H
 
-
 #include <stdlib.h>
 #include <stdio.h>
 #include "dinos.h"
@@ -25,7 +24,6 @@ void inserir_no_fim(tp_lista_dinos *l, dinos d);
 int remover_por_posicao(tp_lista_dinos *l, int p);
 no *busca_por_posicao(tp_lista_dinos *l, int p);
 int lista_vazia(tp_lista_dinos *l);
-int tamanho_lista(tp_lista_dinos *l);
 int inserir_por_posicao(tp_lista_dinos *l, dinos d, int posicao);
 void imprimir_lista(tp_lista_dinos *l);
 

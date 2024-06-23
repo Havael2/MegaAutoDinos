@@ -5,14 +5,14 @@
 #include "batalha.h"
 #include "filadinos.h"
 
-void tabelaL(no *dino, FilaSE *grupo, FilaSE *desaf){
+void tabelaL(nof *dino, FilaSE *grupo, FilaSE *desaf){
     if(dino->hab==20)
         pachy(grupo,desaf);
     else
         printf('\nhabilidade invalida');
 }
 
-void tabela0(no *dino, FilaSE *grupo, FilaSE *desaf){
+void tabela0(nof *dino, FilaSE *grupo, FilaSE *desaf){
     switch(dino->hab){
         case 3:
             ptera(grupo,desaf);
@@ -31,7 +31,7 @@ void tabela0(no *dino, FilaSE *grupo, FilaSE *desaf){
     }
 }
 
-void tabela1(no *dino, FilaSE *grupo, FilaSE *desaf){
+void tabela1(nof *dino, FilaSE *grupo, FilaSE *desaf){
     switch(dino->hab){
         case 2:
             tric(grupo,desaf);
@@ -59,7 +59,7 @@ void tabela1(no *dino, FilaSE *grupo, FilaSE *desaf){
     }
 }
 
-void tabela2(no *dino, FilaSE *grupo, FilaSE *desaf){
+void tabela2(nof *dino, FilaSE *grupo, FilaSE *desaf){
     switch(dino->hab){
         case 0:
             trex(grupo,desaf);
@@ -99,7 +99,7 @@ void tric();
 void ptera();
 void steg();
 void spino(FilaSE *desaf){
-    no *d;
+    nof *d;
     srand(time(NULL));
 
     d=busca_fila(rand()%22);

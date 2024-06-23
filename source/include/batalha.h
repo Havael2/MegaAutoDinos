@@ -2,18 +2,27 @@
 #define BATALHA_H
 
 #include "listadinos.h"
+#include "filadinos.h"
 #include "nomegrupo.h"
 #include "dinos.h"
 #include "habilidades.h"
 #include <string.h>
 
+FilaSE* lisFil(tp_lista_dinos *l){
+
+    FilaSE *f = criar_filase();
+    no *n = l->fim;
+
+    while(n!=NULL){
+        enfileirase(f,n->dados);
+        n=n->ant;
+    }
+}
+
 // batalha provisoria para a segunda entrega
-void batalha(tp_lista_dinos **grupo, char *nomeG) {
+int batalha(FilaSE **clone, char *nomeG) {
     
-    tp_lista_dinos *clone_grupo;  
-    clone_grupo = copiar_lista(*grupo);
-    
-    tp_lista_dinos *bot;
+    FilaSE *bot;
     int rcont = 1;
     bot = criar_lista();
     char nomeBot[40];
@@ -25,58 +34,58 @@ void batalha(tp_lista_dinos **grupo, char *nomeG) {
     printf("\n            %s   VS   %s (bot)\n", nomeG, nomeBot);
     printf("\n-----------------------------------------------------------------------\n");
     system("pause");
-    while (clone_grupo != NULL && bot != NULL) {
-        //tabelaH(clone_grupo->dados.hab);
+    while (clone != NULL && bot != NULL) {
+        //tabelaH(clone->dados.hab);
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         printf("\n--Formacao do grupo %s--\n\n", nomeG);
-        imprimir_lista(clone_grupo);
+        imprimir_lista(clone);
         printf("\n--Formacao do grupo: %s--\n\n", nomeBot);
         imprimir_lista(bot);
 
-        tabela0(clone_grupo->dados,clone_grupo,bot);
-        tabela0(bot->dados,clone_grupo,bot);
+        tabela0(clone->dados,clone,bot);
+        tabela0(bot->dados,clone,bot);
 
-        tabela1(clone_grupo->dados,clone_grupo,bot);
-        tabela1(bot->dados,clone_grupo,bot);
+        tabela1(clone->dados,clone,bot);
+        tabela1(bot->dados,clone,bot);
 
-        clone_grupo->dados.vida -= bot->dados.dano;
-        bot->dados.vida -= clone_grupo->dados.dano;
+        clone->dados.vida -= bot->dados.dano;
+        bot->dados.vida -= clone->dados.dano;
 
-        tabela2(clone_grupo->dados,clone_grupo,bot);
-        tabela2(bot->dados,clone_grupo,bot);
+        tabela2(clone->dados,clone,bot);
+        tabela2(bot->dados,clone,bot);
         
         printf("\n\nROUND %d\n", rcont);
-        printf("\n%s      VS     %s\n", clone_grupo->dados.nome,  bot->dados.nome);
-        printf("\nVida: %d           %d\n", clone_grupo->dados.vida,  bot->dados.vida); 
-        printf("\nDano: %d           %d\n", clone_grupo->dados.dano,  bot->dados.dano); 
-        if (clone_grupo->dados.vida <= 0) 
-            remover_por_posicao(&clone_grupo, 1);
+        printf("\n%s      VS     %s\n", clone->dados.nome,  bot->dados.nome);
+        printf("\nVida: %d           %d\n", clone->dados.vida,  bot->dados.vida); 
+        printf("\nDano: %d           %d\n", clone->dados.dano,  bot->dados.dano); 
+        if (clone->dados.vida <= 0) 
+            remover_por_posicao(&clone, 1);
         if (bot->dados.vida <= 0)
             remover_por_posicao(&bot, 1);
         rcont++;
         system("pause");
     }
-    if (clone_grupo == NULL && bot == NULL) {
+    if (clone == NULL && bot == NULL) {
         printf("\n\nFim da batalha\nResultado: EMPATE\n");
-        return;
+        return 0;
     }
-    if (clone_grupo == NULL){
+    if (clone == NULL){
         printf("\n\nFim da batalha\nResultado: DERROTA\n");
-        return;
+        return 1;
     }
     if (bot == NULL) {
         printf("\n\nFim da batalha\nResultado: VITORIA\n");
-        return;
+        return 0;
     }
 }
 
 /* previa da funcao final:
 
-void batalha(int *coracao, int *trofeis, tp_lista_dinos **grupo) {
-    tp_lista_dinos *clone_grupo;  clone_grupo = copiar_lista(*grupo);
-    imprimir_lista(clone_grupo);
-    remover_por_posicao(&clone_grupo, 1);
-    imprimir_lista(clone_grupo);
+void batalha(int *coracao, int *trofeis, FilaSE **grupo) {
+    FilaSE *clone;  clone = copiar_lista(*grupo);
+    imprimir_lista(clone);
+    remover_por_posicao(&clone, 1);
+    imprimir_lista(clone);
     imprimir_lista(*grupo);
 
 

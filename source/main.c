@@ -2,20 +2,34 @@
 #include "dinos.h"
 #include "nomegrupo.h"
 #include "listadinos.h"
+#include "filadinos.h"
 #include "batalha.h"
 #include "loja.h"
 #include "titulo.h"
 
 //testes
 int main() {
-	titulo();
     srand(time(NULL));
+    int coracao=5,turno=1;
     char nomeGrupo[40];
-    tp_lista_dinos *grupo;  
+    tp_lista_dinos *grupo;
+    FilaSE *clone;
+
+    titulo();
     grupo = criar_lista();
     definir_nome(nomeGrupo);
-    loja(&grupo);
-    batalha(&grupo, nomeGrupo);
+
+    while(coracao){
+        loja(&grupo);
+
+        clone = lisFil(grupo);
+        coracao-=batalha(&clone, nomeGrupo);
+        turno++;
+        if(turno%3==0){
+            coracao++;
+        }
+    }
+
     return 0;
 }
 

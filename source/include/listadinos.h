@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "dinos.h"
-#include "habilidades.h"
 
 typedef struct no{
 	dinos dados;
@@ -118,7 +117,7 @@ int remover_por_posicao(tp_lista_dinos *l, int p){
 	return 1;
 }
 
-int listade_vazia(tp_lista_dinos *l){
+int lista_vazia(tp_lista_dinos *l){
 	if(l->ini == NULL && l->fim == NULL){
 	return 1;
 	}
@@ -234,7 +233,7 @@ void compra(tp_lista_dinos *loja, tp_lista_dinos *grupo) {
 
     inserir_por_posicao(grupo, aux->dados, p2);
     remover_por_posicao(loja, p1);
-	tabelaL(aux);
+	tabelaL(aux,grupo);
 }
 
 void venda(tp_lista_dinos *l){

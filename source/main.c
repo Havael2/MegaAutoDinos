@@ -4,6 +4,7 @@
 #include "listadinos.h"
 #include "filadinos.h"
 #include "batalha.h"
+#include "habilidades.h"
 #include "loja.h"
 #include "titulo.h"
 
@@ -20,7 +21,7 @@ int main() {
     definir_nome(nomeGrupo);
 
     while(coracao){
-        loja(&grupo);
+        loja(grupo);
 
         clone = lisFil(grupo);
         coracao-=batalha(&clone, nomeGrupo);

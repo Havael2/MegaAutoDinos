@@ -1,9 +1,12 @@
 #ifndef FILASE_H
 #define FILASE_H
+
+#include <stdlib.h>
+#include <stdio.h>
 #include "dinos.h"
 
 typedef struct nof{
-	dinofs dados;
+	dinos dados;
 	struct nof *prox;
 }nof;	
 
@@ -15,15 +18,16 @@ typedef struct{
 
 FilaSE *criar_filase();
 nof *aloca_nof();
-void enfileirase(FilaSE *f, dino e);
-int desenfileirase(FilaSE *f, dino *r);
+nof *busca_fila();
+void enfileirase(FilaSE *f, dinos e);
+int desenfileirase(FilaSE *f, dinos *r);
 int filase_vazia(FilaSE *f);
-int primeiro_fila(Fila *f);
-int ultimo_fila(Fila *f);
-void imprimir_fila(Fila *f);
+int primeiro_fila(FilaSE *f);
+int ultimo_fila(FilaSE *f);
+void imprimir_fila(FilaSE *f);
 
 FilaSE *criar_filase(){
-	FilaSE fila;
+	FilaSE *fila;
 	fila = (FilaSE*) malloc(sizeof(FilaSE));
 	fila->ini = fila->fim = NULL;
 	fila->tam = 0;
@@ -36,7 +40,7 @@ nof *aloca_nof(){
 	return f;
 }
 
-void enfileirase(FilaSE *f, dino e){
+void enfileirase(FilaSE *f, dinos e){
 	nof *nofvonof;
 	
 	nofvonof = aloca();
@@ -53,7 +57,7 @@ void enfileirase(FilaSE *f, dino e){
 	f->tam++;
 }
 
-int desenfileirase(FilaSE *f, dino *r){
+int desenfileirase(FilaSE *f, dinos *r){
 	nof *aux;
 	
 	if(filase_vazia(f)){
@@ -84,7 +88,7 @@ int filase_vazia(FilaSE *f){
 
 FilaSE *destruir_fila(FilaSE *f){
 	nof *aux;
-	dino d;
+	dinos d;
 	aux = f->ini;
 	
 	while(aux != NULL){
@@ -111,7 +115,7 @@ int tamanho_filase(FilaSE *f){
 
 void imprimir_fila(FilaSE *f){
     FilaSE *f_aux;
-    dino i;
+    dinos i;
 	f_aux = criar_filase();
      
 	while(!filase_vazia(f)){

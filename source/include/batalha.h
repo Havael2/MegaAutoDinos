@@ -11,23 +11,26 @@
 FilaSE* lisFil(tp_lista_dinos *l){
 
     FilaSE *f = criar_filase();
-    no *n = l->fim;
+    no *n = l->ini;
 
     while(n!=NULL){
-        enfileirase(f,n->dados);
-        n=n->ant;
+        enfileirase(f,n->ini->dados);
+        n=n->prox;
     }
 }
 
 // batalha provisoria para a segunda entrega
-int batalha(FilaSE **clone, char *nomeG) {
+int batalha(FilaSE *clone, char *nomeG) {
     
+    tp_lista_dinos *tbot;
     FilaSE *bot;
     int rcont = 1;
-    bot = criar_lista();
+    tbot = criar_lista();
+    bot = criar_filase();
     char nomeBot[40];
     definir_nome_aleatorio(nomeBot);
-    embaralharGrupo(&bot, 3);
+    embaralharGrupo(&tbot, 3);
+    bot = lisFil(tbot);
     
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("\n-------------------------------BATALHA 1-------------------------------\n");
@@ -35,32 +38,32 @@ int batalha(FilaSE **clone, char *nomeG) {
     printf("\n-----------------------------------------------------------------------\n");
     system("pause");
     while (clone != NULL && bot != NULL) {
-        //tabelaH(clone->dados.hab);
+        tabelaH(clone->ini->dados.hab);
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         printf("\n--Formacao do grupo %s--\n\n", nomeG);
-        imprimir_lista(clone);
+        imprimir_fila(clone);
         printf("\n--Formacao do grupo: %s--\n\n", nomeBot);
-        imprimir_lista(bot);
+        imprimir_fila(bot);
 
-        tabela0(clone->dados,clone,bot);
-        tabela0(bot->dados,clone,bot);
+        tabela0(clone->ini->dados,clone,bot);
+        tabela0(bot->ini->dados,clone,bot);
 
-        tabela1(clone->dados,clone,bot);
-        tabela1(bot->dados,clone,bot);
+        tabela1(clone->ini->dados,clone,bot);
+        tabela1(bot->ini->dados,clone,bot);
 
-        clone->dados.vida -= bot->dados.dano;
-        bot->dados.vida -= clone->dados.dano;
+        clone->ini->dados.vida -= bot->ini->dados.dano;
+        bot->ini->dados.vida -= clone->ini->dados.dano;
 
-        tabela2(clone->dados,clone,bot);
-        tabela2(bot->dados,clone,bot);
+        tabela2(clone->ini->dados,clone,bot);
+        tabela2(bot->ini->dados,clone,bot);
         
         printf("\n\nROUND %d\n", rcont);
-        printf("\n%s      VS     %s\n", clone->dados.nome,  bot->dados.nome);
-        printf("\nVida: %d           %d\n", clone->dados.vida,  bot->dados.vida); 
-        printf("\nDano: %d           %d\n", clone->dados.dano,  bot->dados.dano); 
-        if (clone->dados.vida <= 0) 
+        printf("\n%s      VS     %s\n", clone->ini->dados.nome,  bot->ini->dados.nome);
+        printf("\nVida: %d           %d\n", clone->ini->dados.vida,  bot->ini->dados.vida); 
+        printf("\nDano: %d           %d\n", clone->ini->dados.dano,  bot->ini->dados.dano); 
+        if (clone->ini->dados.vida <= 0) 
             remover_por_posicao(&clone, 1);
-        if (bot->dados.vida <= 0)
+        if (bot->ini->dados.vida <= 0)
             remover_por_posicao(&bot, 1);
         rcont++;
         system("pause");

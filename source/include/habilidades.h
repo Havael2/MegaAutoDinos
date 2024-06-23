@@ -1,16 +1,18 @@
 #ifndef HAB_H
 #define HAB_H
+#include "time.h"
 #include "dinos.h"
 #include "batalha.h"
+#include "filadinos.h"
 
-void tabelaL(no *dino, tp_lista_dinos *grupo, tp_lista_dinos *desaf){
+void tabelaL(no *dino, FilaSE *grupo, FilaSE *desaf){
     if(dino->hab==20)
         pachy(grupo,desaf);
     else
         printf('\nhabilidade invalida');
 }
 
-void tabela0(no *dino, tp_lista_dinos *grupo, tp_lista_dinos *desaf){
+void tabela0(no *dino, FilaSE *grupo, FilaSE *desaf){
     switch(dino->hab){
         case 3:
             ptera(grupo,desaf);
@@ -29,13 +31,13 @@ void tabela0(no *dino, tp_lista_dinos *grupo, tp_lista_dinos *desaf){
     }
 }
 
-void tabela1(no *dino, tp_lista_dinos *grupo, tp_lista_dinos *desaf){
+void tabela1(no *dino, FilaSE *grupo, FilaSE *desaf){
     switch(dino->hab){
         case 2:
             tric(grupo,desaf);
         break;
         case 5:
-            spino(grupo,desaf);
+            spino(desaf);
         break;
         case 6:
             anqui(grupo,desaf);
@@ -57,7 +59,7 @@ void tabela1(no *dino, tp_lista_dinos *grupo, tp_lista_dinos *desaf){
     }
 }
 
-void tabela2(no *dino, tp_lista_dinos *grupo, tp_lista_dinos *desaf){
+void tabela2(no *dino, FilaSE *grupo, FilaSE *desaf){
     switch(dino->hab){
         case 0:
             trex(grupo,desaf);
@@ -96,7 +98,13 @@ void veloc();
 void tric();
 void ptera();
 void steg();
-void spino();
+void spino(FilaSE *desaf){
+    no *d;
+    srand(time(NULL));
+
+    d=busca_fila(rand()%22);
+    d->dados.vida-=1;
+}
 void anqui();
 void dilopho();
 void brach();

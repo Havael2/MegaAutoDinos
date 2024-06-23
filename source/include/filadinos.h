@@ -1,24 +1,22 @@
 #ifndef FILASE_H
 #define FILASE_H
+#include "dinos.h"
 
-typedef int
-	valor;
-	
 typedef struct no{
-	valor item;
+	dino dados;
 	struct no *prox;
 }no;	
 
 typedef struct{
 	no *ini;
 	no *fim;
-	valor tam;	
+	int tam;	
 }FilaSE;
 
 FilaSE *criar_filase();
 no *aloca_no();
-void enfileirase(FilaSE *f, valor e);
-int desenfileirase(FilaSE *f, valor *r);
+void enfileirase(FilaSE *f, dino e);
+int desenfileirase(FilaSE *f, dino *r);
 int filase_vazia(FilaSE *f);
 int primeiro_fila(Fila *f);
 int ultimo_fila(Fila *f);
@@ -38,11 +36,11 @@ no *aloca_no(){
 	return f;
 }
 
-void enfileirase(FilaSE *f, valor e){
+void enfileirase(FilaSE *f, dino e){
 	no *NovoNo;
 	
 	NovoNo = aloca();
-	NovoNo->item = e;
+	NovoNo->dados = e;
 	NovoNo->prox = NULL;
 	
 	if(filase_vazia(f)){
@@ -55,14 +53,14 @@ void enfileirase(FilaSE *f, valor e){
 	f->tam++;
 }
 
-int desenfileirase(FilaSE *f, valor *r){
+int desenfileirase(FilaSE *f, dino *r){
 	no *aux;
 	
 	if(filase_vazia(f)){
 	return 0;	
 	}	
 	
-	*r = f->ini->item;
+	*r = f->ini->dados;
 	aux = f->ini;
 	
 	if(f->ini == f->fim){
@@ -86,7 +84,7 @@ int filase_vazia(FilaSE *f){
 
 FilaSE *destruir_fila(FilaSE *f){
 	no *aux;
-	valor d;
+	dino d;
 	aux = f->ini;
 	
 	while(aux != NULL){
@@ -100,11 +98,11 @@ FilaSE *destruir_fila(FilaSE *f){
 }
 
 int primeiro_filase(FilaSE *f){
-	return f->ini->item;
+	return f->ini->dados;
 }
 
 int ultimo_filase(FilaSE *f){
-	return f->fim->item;
+	return f->fim->dados;
 }
 
 int tamanho_filase(FilaSE *f){
@@ -113,7 +111,7 @@ int tamanho_filase(FilaSE *f){
 
 void imprimir_fila(FilaSE *f){
     FilaSE *f_aux;
-    valor i;
+    dino i;
 	f_aux = criar_filase();
      
 	while(!filase_vazia(f)){

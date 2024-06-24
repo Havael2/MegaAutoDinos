@@ -22,8 +22,8 @@ nof *busca_fila();
 void enfileirase(FilaSE *f, dinos e);
 int desenfileirase(FilaSE *f, dinos *r);
 int filase_vazia(FilaSE *f);
-dinos primeiro_fila(FilaSE *f);
-dinos ultimo_fila(FilaSE *f);
+int primeiro_fila(FilaSE *f);
+int ultimo_fila(FilaSE *f);
 void imprimir_fila(FilaSE *f);
 
 FilaSE *criar_filase(){
@@ -41,24 +41,23 @@ nof *aloca_nof(){
 }
 
 void enfileirase(FilaSE *f, dinos e){
-	nof *novoNof;
+	nof *nofvonof;
 	
-	novoNof = aloca_nof();
-	novoNof->dados = e;
-	novoNof->prox = NULL;
+	nofvonof = aloca_nof();
+	nofvonof->dados = e;
+	nofvonof->prox = NULL;
 	
 	if(filase_vazia(f)){
-	f->ini = novoNof;
+	f->ini = nofvonof;
 	}
 	else{
-	f->fim->prox = novoNof;	
+	f->fim->prox = nofvonof;	
 	}
-	f->fim = novoNof;
+	f->fim = nofvonof;
 	f->tam++;
 }
 
-dinos* desenfileirase(FilaSE *f){
-	dinos *r;
+int desenfileirase(FilaSE *f, dinos *r){
 	nof *aux;
 	
 	if(filase_vazia(f)){
@@ -77,7 +76,7 @@ dinos* desenfileirase(FilaSE *f){
 	
 	free(aux);
 	f->tam--;
-	return r;
+	return 1;
 }
 
 int filase_vazia(FilaSE *f){
@@ -121,7 +120,9 @@ void imprimir_fila(FilaSE *f){
      
 	while(!filase_vazia(f)){
     	desenfileirase(f,&i);
-		printf("%d ", i);
+		printf(" Nome : %s\n", i.nome);
+		printf(" Vida: %d\n", i.vida);
+		printf(" Dano: %d\n", i.dano);
     	enfileirase(f_aux, i);           
     }
 

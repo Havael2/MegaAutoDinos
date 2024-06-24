@@ -7,6 +7,7 @@
 #include "habilidades.h"
 #include "listadinos.h"
 #include "filadinos.h"
+#include "loja.h"
 
 FilaSE* lisFil(tp_lista_dinos *l){
 
@@ -61,9 +62,9 @@ int batalha(FilaSE *clone, char *nomeG) {
         printf("\nVida: %d           %d\n", clone->ini->dados.vida,  bot->ini->dados.vida); 
         printf("\nDano: %d           %d\n", clone->ini->dados.dano,  bot->ini->dados.dano); 
         if (clone->ini->dados.vida <= 0) 
-            remover_por_posicao(clone, 1);
+            desenfileirase(clone);
         if (bot->ini->dados.vida <= 0)
-            remover_por_posicao(bot, 1);
+            desenfileirase(bot);
         rcont++;
         system("pause");
     }
@@ -86,7 +87,7 @@ int batalha(FilaSE *clone, char *nomeG) {
 void batalha(int *coracao, int *trofeis, FilaSE **grupo) {
     FilaSE *clone;  clone = copiar_lista(*grupo);
     imprimir_lista(clone);
-    remover_por_posicao(&clone, 1);
+    desenfileirase(&clone, 1);
     imprimir_lista(clone);
     imprimir_lista(*grupo);
 

@@ -93,7 +93,7 @@ int remover_por_posicao(tp_lista_dinos *l, int p){
 		cont++;
 	}
 	
-	if(listade_vazia(l)){
+	if(lista_vazia(l)){
 		return 0;
 	}
 	

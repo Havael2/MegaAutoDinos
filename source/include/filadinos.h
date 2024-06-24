@@ -57,7 +57,8 @@ void enfileirase(FilaSE *f, dinos e){
 	f->tam++;
 }
 
-int desenfileirase(FilaSE *f, dinos *r){
+dinos* desenfileirase(FilaSE *f){
+	dinos *r;
 	nof *aux;
 	
 	if(filase_vazia(f)){
@@ -76,7 +77,7 @@ int desenfileirase(FilaSE *f, dinos *r){
 	
 	free(aux);
 	f->tam--;
-	return 1;
+	return r;
 }
 
 int filase_vazia(FilaSE *f){

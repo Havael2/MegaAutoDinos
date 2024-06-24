@@ -2,6 +2,7 @@
 #define HAB_H
 #include "time.h"
 #include "dinos.h"
+#include "listadinos.h"
 #include "filadinos.h"
 
 void trex();

@@ -69,7 +69,7 @@ void inserir_no_inicio(tp_lista_dinos *l, dinos d){
 	NovoNo = aloca_no();
 	NovoNo->dados = d;
 	
-	if(listade_vazia(l)){
+	if(lista_vazia(l)){
 		NovoNo->prox = NULL;	
 		NovoNo->ant = NULL;
 		l->ini = l->fim = NovoNo;

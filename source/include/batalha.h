@@ -1,100 +1,85 @@
 #ifndef BATALHA_H
 #define BATALHA_H
 
-#include <string.h>
-#include "dinos.h"
-#include "nomegrupo.h"
-#include "habilidades.h"
 #include "listadinos.h"
 #include "filadinos.h"
-#include "loja.h"
+#include "nomegrupo.h"
+#include "dinos.h"
+#include <string.h>
 
-FilaSE* lisFil(tp_lista_dinos *l){
+FilaSE* transferir_lista_para_fila(tp_lista_dinos *l, FilaSE *f) {
+    no *aux;
+    aux = l->ini;
 
-    FilaSE *f = criar_filase();
-    no *n = l->ini;
-
-    while(n!=NULL){
-        enfileirase(f,n->dados);
-        n=n->prox;
+    while (aux != NULL) {
+        enfileirase(f, aux->dados);
+        aux = aux->prox;
     }
+    return f;
 }
 
-// batalha provisoria para a segunda entrega
+void embaralha_fila (FilaSE *f){
+	
+ 	for (int i = 1; i <= 4; i++){
+ 		enfileirase (f,especies(rand()%TAMesp));
+	 }
+}
+
 int batalha(FilaSE *clone, char *nomeG) {
-    
-    tp_lista_dinos *tbot;
+    dinos d;
     FilaSE *bot;
     int rcont = 1;
-    tbot = criar_lista();
     bot = criar_filase();
     char nomeBot[40];
     definir_nome_aleatorio(nomeBot);
-    embaralharGrupo(tbot, 3);
-    bot = lisFil(tbot);
-    
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    embaralha_fila(bot);
+
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("\n-------------------------------BATALHA 1-------------------------------\n");
     printf("\n            %s   VS   %s (bot)\n", nomeG, nomeBot);
     printf("\n-----------------------------------------------------------------------\n");
     system("pause");
-    while (clone != NULL && bot != NULL) {
+    
+    while (!filase_vazia(clone) && !filase_vazia(bot)) {
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         printf("\n--Formacao do grupo %s--\n\n", nomeG);
         imprimir_fila(clone);
         printf("\n--Formacao do grupo: %s--\n\n", nomeBot);
         imprimir_fila(bot);
 
-        tabela0(clone->ini,clone,bot);
-        tabela0(bot->ini,clone,bot);
-
-        tabela1(clone->ini,clone,bot);
-        tabela1(bot->ini,clone,bot);
-
         clone->ini->dados.vida -= bot->ini->dados.dano;
         bot->ini->dados.vida -= clone->ini->dados.dano;
 
-        tabela2(clone->ini,clone,bot);
-        tabela2(bot->ini,clone,bot);
-        
         printf("\n\nROUND %d\n", rcont);
-        printf("\n%s      VS     %s\n", clone->ini->dados.nome,  bot->ini->dados.nome);
-        printf("\nVida: %d           %d\n", clone->ini->dados.vida,  bot->ini->dados.vida); 
-        printf("\nDano: %d           %d\n", clone->ini->dados.dano,  bot->ini->dados.dano); 
+        printf("\n%s      VS     %s\n", clone->ini->dados.nome, bot->ini->dados.nome);
+        printf("\nVida: %d           %d\n", clone->ini->dados.vida, bot->ini->dados.vida); 
+        printf("\nDano: %d           %d\n", clone->ini->dados.dano, bot->ini->dados.dano); 
+        
         if (clone->ini->dados.vida <= 0) 
-            desenfileirase(clone);
+            desenfileirase(clone, &d);
         if (bot->ini->dados.vida <= 0)
-            desenfileirase(bot);
+            desenfileirase(bot, &d);
+        
         rcont++;
         system("pause");
     }
-    if (clone == NULL && bot == NULL) {
+
+    if (filase_vazia(clone) && filase_vazia(bot)) {
         printf("\n\nFim da batalha\nResultado: EMPATE\n");
-        return 0;
+        system("pause");
+        return 0; 
     }
-    if (clone == NULL){
+    if (filase_vazia(clone)) {
         printf("\n\nFim da batalha\nResultado: DERROTA\n");
-        return 1;
+        system("pause");
+        return -1; 
     }
-    if (bot == NULL) {
+    if (filase_vazia(bot)) {
         printf("\n\nFim da batalha\nResultado: VITORIA\n");
-        return 0;
+        system("pause");
+        return 1; 
     }
 }
 
-/* previa da funcao final:
-
-void batalha(int *coracao, int *trofeis, FilaSE **grupo) {
-    FilaSE *clone;  clone = copiar_lista(*grupo);
-    imprimir_lista(clone);
-    desenfileirase(&clone, 1);
-    imprimir_lista(clone);
-    imprimir_lista(*grupo);
-
-
-
-
-
-} */
-
 #endif
+

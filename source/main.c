@@ -1,10 +1,10 @@
 #include <time.h>
 #include "dinos.h"
 #include "nomegrupo.h"
+#include "habilidades.h"
 #include "listadinos.h"
 #include "filadinos.h"
 #include "batalha.h"
-#include "habilidades.h"
 #include "loja.h"
 #include "titulo.h"
 
@@ -24,7 +24,7 @@ int main() {
         loja(grupo);
 
         clone = lisFil(grupo);
-        coracao-=batalha(&clone, nomeGrupo);
+        coracao-=batalha(clone, nomeGrupo);
         turno++;
         if(turno%3==0){
             coracao++;

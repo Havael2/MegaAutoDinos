@@ -33,14 +33,14 @@ void trood();
 void pachy();
 
 void tabelaL(no *no, FilaSE *grupo){
-    if(no->dados->hab==20)
+    if(no->dados.hab==20)
         pachy(grupo);
     else
         printf("\nhabilidade invalida");
 }
 
 void tabela0(nof *no, FilaSE *grupo, FilaSE *desaf){
-    switch(no->dados->hab){
+    switch(no->dados.hab){
         case 3:
             ptera(grupo,desaf);
         break;
@@ -59,7 +59,7 @@ void tabela0(nof *no, FilaSE *grupo, FilaSE *desaf){
 }
 
 void tabela1(nof *no, FilaSE *grupo, FilaSE *desaf){
-    switch(no->dados->hab){
+    switch(no->dados.hab){
         case 2:
             tric(grupo,desaf);
         break;
@@ -87,7 +87,7 @@ void tabela1(nof *no, FilaSE *grupo, FilaSE *desaf){
 }
 
 void tabela2(nof *no, FilaSE *grupo, FilaSE *desaf){
-    switch(no->dados->hab){
+    switch(no->dados.hab){
         case 0:
             trex(grupo,desaf);
         break;

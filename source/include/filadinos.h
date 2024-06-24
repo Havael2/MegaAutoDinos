@@ -22,8 +22,8 @@ nof *busca_fila();
 void enfileirase(FilaSE *f, dinos e);
 int desenfileirase(FilaSE *f, dinos *r);
 int filase_vazia(FilaSE *f);
-int primeiro_fila(FilaSE *f);
-int ultimo_fila(FilaSE *f);
+dinos primeiro_fila(FilaSE *f);
+dinos ultimo_fila(FilaSE *f);
 void imprimir_fila(FilaSE *f);
 
 FilaSE *criar_filase(){
@@ -41,19 +41,19 @@ nof *aloca_nof(){
 }
 
 void enfileirase(FilaSE *f, dinos e){
-	nof *nofvonof;
+	nof *novoNof;
 	
-	nofvonof = aloca();
-	nofvonof->dados = e;
-	nofvonof->prox = NULL;
+	novoNof = aloca_nof();
+	novoNof->dados = e;
+	novoNof->prox = NULL;
 	
 	if(filase_vazia(f)){
-	f->ini = nofvonof;
+	f->ini = novoNof;
 	}
 	else{
-	f->fim->prox = nofvonof;	
+	f->fim->prox = novoNof;	
 	}
-	f->fim = nofvonof;
+	f->fim = novoNof;
 	f->tam++;
 }
 
@@ -101,11 +101,11 @@ FilaSE *destruir_fila(FilaSE *f){
 	return NULL;
 }
 
-int primeiro_filase(FilaSE *f){
+dinos primeiro_filase(FilaSE *f){
 	return f->ini->dados;
 }
 
-int ultimo_filase(FilaSE *f){
+dinos ultimo_filase(FilaSE *f){
 	return f->fim->dados;
 }
 

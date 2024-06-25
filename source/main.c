@@ -1,4 +1,3 @@
-
 #include <time.h>
 #include "dinos.h"
 #include "nomegrupo.h"
@@ -12,6 +11,7 @@
 int main() {
     srand(time(NULL));
     int coracao= 5,turno=1, trofeu= 0;
+    int resultado;
     char nomeGrupo[40];
     tp_lista_dinos *grupo;
     FilaSE *clone, *bot;
@@ -23,14 +23,16 @@ int main() {
     definir_nome(nomeGrupo);
 
     while (coracao) {
+      printf("Trofeus: %d\n", trofeu);
+      printf("Coracoes: %d\n", coracao);	
       loja(grupo);
       clone = transferir_lista_para_fila(grupo, clone);
-      coracao-=batalha(clone, nomeGrupo);
-      if (coracao == 1){
-      coracao--;
-     }
-      else if (coracao == -1){
+      resultado = batalha(clone, nomeGrupo);
+      if (resultado == 1){
       trofeu++;
+     }
+      else if (resultado == -1){
+      coracao--;
      }
       turno++;
       if(turno%3==0){
@@ -39,22 +41,3 @@ int main() {
   }
     return 0;
 }
-
-/* previa da main final
-
-int main() {
-    srand(time(NULL));
-    int coracao = 10, trofeis = 0;
-    char nomeGrupo[40];
-    tp_lista_dinos *grupo; 
-    grupo = criar_lista();
-
-    definirNome(nomeGrupo);
-    printf("Nome do grupo: %s\n", nomeGrupo);
-    while (coracao > 0 || trofeis < 10) {
-        loja(&grupo);
-        batalha(&coracao, &trofeis, &grupo);
-    }
-
-    return 0;
-} */
